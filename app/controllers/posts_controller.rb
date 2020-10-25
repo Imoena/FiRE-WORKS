@@ -13,31 +13,57 @@ class PostsController < ApplicationController
  def show
  	@post = Post.find(params[:id])
  	@comments = @post.comments
-    @comment = @post.comments.new #投稿全体へのコメント投稿用の変数
-    @comment_reply = @post.comments.new #コメントに対する返信用の変数
+  @comment = @post.comments.new #投稿全体へのコメント投稿用の変数
+  @comment_reply = @post.comments.new #コメントに対する返信用の変数
+  @like = Like.new
  end
 
  def create
- 	post = Post.new(post_params)
+ 	@post = Post.new(post_params)
  	@post.user_id = current_user.id
+  @user = current_user
  	if @post.save
  	# リダイレクト先変える
  	   redirect_back(fallback_location: root_path)
-    else
-       redirect_back(fallback_location: root_path)
-    end
+  else
+     redirect_back(fallback_location: root_path)
+  end
  end
+
+ def edit
+   @post = Post.find(params[:id])
+   if @post.user == current_user
+      render "edit"
+   else
+      redirect_to books_path
+   end
+ end
+
+ def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      # flash[:notice] = "You have updated post successfully."
+      redirect_to post_path(@post.id)
+    else
+      render :edit
+    end
+  end
 
 
  def destroy
 	@post = Post.find(params[:id])
 	@post.destroy
-	redirect_to post_images_path
+	redirect_to user_path(current_user)
+ end
+
+ def search
+    # @players = Player.search(params[:search])
+    @posts = Post.search(params[:search])
  end
 
   private
   def post_params
-    params.require(:post).permit(:festival, :prefecture, :city, :transportation, :status, :impressions, :image_id, :date, :belongings)
+    params.require(:post).permit(:festival, :prefecture, :city, :transportation, :status, :impressions, :image, :date, :belongings, :rate, :user_id)
   end
 
 end

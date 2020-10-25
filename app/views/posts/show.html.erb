@@ -1,0 +1,34 @@
+<script src="https://kit.fontawesome.com/17810510b7.js" crossorigin="anonymous"></script>
+
+<h4>花火大会名</h4>
+  <%= @post.festival %>
+<h4>都道府県名</h4>
+  <%= @post.prefecture %>
+<h4>市町村名</h4>
+  <%= @post.city %>
+<h4>感想</h4>
+  <%= @post.impressions %>
+<h4>画像</h4>
+  <%= attachment_image_tag @post, :image, :fill, 60, 60, format: 'jpeg', size:'60x60' %>
+<h4>交通手段</h4>
+  <%= @post.transportation %>
+<h4>持ち物</h4>
+  <%= @post.belongings %>
+
+<!-- 編集、削除 -->
+<% if @post.user.id == current_user.id %>
+     <%= link_to "編集", edit_post_path(@post)%>
+     <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか?" %>
+<% end %>
+
+<!-- お気に入り -->
+<% if current_user.already_liked?(@post) %>
+  <%= link_to post_like_path(@post), method: :delete do %>
+    <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+  <% end %>
+<% else %>
+  <%= link_to post_likes_path(@post), method: :post do %>
+    <i class="fa fa-heart-o" aria-hidden="true"></i>
+  <% end %>
+<% end %>
+<%= @post.likes.count %>

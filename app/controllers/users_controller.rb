@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		@posts = @user.post.page(params[:page]).reverse_order
+		@posts = @user.posts
 	end
 
 	def edit
@@ -15,6 +15,17 @@ class UsersController < ApplicationController
 	    redirect_to user_path(@user.id)
 	end
 
+	def cancel
+		@user = current_user
+	end
+
+	def destroy
+	    @user = User.find(params[:id])
+	    @user.destroy
+	    flash[:success] = 'ご利用ありがとうございました'
+	    redirect_to :root
+    end
+
     private
 
 	def user_params
@@ -22,3 +33,4 @@ class UsersController < ApplicationController
 	end
 
 end
+
