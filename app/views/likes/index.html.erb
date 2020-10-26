@@ -7,6 +7,8 @@
 	  <%= post.prefecture %>
 	  <%= post.city %>
 	  <%= attachment_image_tag post, :image, :fill, 60, 60, format: 'jpeg', size:'60x60' %>
+	 <%= link_to "見る", post_path(post) %>
+
   </div>
 <% end %>
 <%= link_to "マイページ", user_path(@user) %>

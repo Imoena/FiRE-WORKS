@@ -7,9 +7,7 @@
  <input class="number" max="5.0" min="0" name="star" step="0.5" type="number" placeholder="強さ(５段階評価)"/>
 
   <h4>都道府県名</h4>
-    <%= form_for @post, method: :post do |f| %>
     <%= f.select :prefecture, Post.prefectures.keys, {} %>
-  <% end %>
   <h4>市町村名</h4>
   <%= f.text_field :city %>
   <h4>感想</h4>

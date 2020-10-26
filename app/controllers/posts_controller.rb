@@ -24,7 +24,8 @@ class PostsController < ApplicationController
   @user = current_user
  	if @post.save
  	# リダイレクト先変える
- 	   redirect_back(fallback_location: root_path)
+ 	   redirect_to post_path(@post)
+
   else
      redirect_back(fallback_location: root_path)
   end
