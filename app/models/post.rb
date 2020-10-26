@@ -14,6 +14,8 @@ class Post < ApplicationRecord
   def self.search(search)
       if search
         Post.where(['festival LIKE ?', "%#{search}%"])
+        Post.where(['city LIKE ?', "%#{search}%"])
+        # Post.where(['prefecture LIKE ?', "%#{search}%"]) integerにしてるから検索できない、後で考える
       else
         Post.all
       end
