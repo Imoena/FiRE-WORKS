@@ -1,0 +1,11 @@
+<p>検索結果</p>
+
+<ul><% @posts.each do |post| %>
+  <li class="search_results" >
+  	<%= attachment_image_tag post, :image, :fill, 60, 60, format: 'jpeg', size:'60x60' %>
+    <%= post.festival  %>
+    <%= link_to "見る", post_path(post) %>
+
+  </li>
+  <% end %>
+</ul>

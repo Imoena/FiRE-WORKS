@@ -1,0 +1,19 @@
+<h1>マイページ</h1>
+<div><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', size:'60x60' %></div>
+<div><%= @user.name %></div>
+<div><%= @user.introduction %></div>
+
+<%= link_to "プロフィール編集", edit_user_path(@user) %>
+<%= link_to "お気に入り一覧", like_users_path %>
+
+<% @posts.each do |post| %>
+<h4>花火大会名</h4>
+  <%= post.festival %>
+<h4>都道府県名</h4>
+  <%= post.prefecture %>
+<h4>市町村名</h4>
+  <%= post.city %>
+<h4>画像</h4>
+  <%= attachment_image_tag post, :image, :fill, 60, 60, format: 'jpeg', size:'60x60' %>
+  <%= link_to "もっと見る", post_path(post.id) %>
+<% end %>

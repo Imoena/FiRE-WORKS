@@ -1,0 +1,22 @@
+<h1>投稿編集ページ</h1>
+
+<%= form_for(@post, url: post_path, method: :PATCH) do |f| %>
+  <h4>花火大会名</h4>
+  <%= f.text_field :festival %>
+
+ <input class="number" max="5.0" min="0" name="star" step="0.5" type="number" placeholder="強さ(５段階評価)"/>
+
+  <h4>都道府県名</h4>
+    <%= f.select :prefecture, Post.prefectures.keys, {} %>
+  <h4>市町村名</h4>
+  <%= f.text_field :city %>
+  <h4>感想</h4>
+  <%= f.text_area :impressions %>
+  <h4>画像</h4>
+  <%= f.attachment_field :image %>
+  <h4>交通手段</h4>
+  <%= f.text_field :transportation%>
+  <h4>持ち物</h4>
+  <%= f.text_field :belongings %>
+  <%= f.submit '編集' %>
+<% end %>
