@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
     resources :comments, only: [:new, :show, :create, :destroy]
   end
-
+  
   get 'likes/index'
 
   post   '/like/:post_id' => 'likes#like',   as: 'like'

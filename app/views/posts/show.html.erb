@@ -26,7 +26,7 @@
 <h4>感想</h4>
   <%= @post.impressions %>
 <h4>画像</h4>
-  <%= attachment_image_tag @post, :image, :fill, 60, 60, format: 'jpeg', size:'60x60' %>
+  <%= attachment_image_tag @post, :image, :fill, 200, 200, format: 'jpeg', size:'200x200' %>
 <h4>交通手段</h4>
   <%= @post.transportation %>
 <h4>持ち物</h4>
@@ -43,21 +43,15 @@
 
 
 <!-- コメント -->
-<h2>コメント一覧</h2>
-<% @comments.each do |comment| %>
-  <div>
-    <%= attachment_image_tag comment.user, :profile_image, :fill, 60, 60, format: 'jpeg', size:'60x60' %>
-    <%= comment.content %>
-    <% if comment.user == current_user %>
-    <%= link_to '削除する', post_comment_path(comment), method: :delete, remote: true %>
-    <% end %>
-  </div>
-<% end %>
-<h2>コメント投稿</h2>
-<%= form_with model:[@post, @comment] do |f| %>
-  <%= f.text_field :content %>
-  <br>
-  <%= f.submit 'コメントする' %>
-<% end %>
+<div>
+  <h4>コメント</h4>
+ <!-- id="comments_area"でこのdiv内をajaxで書き換え -->
+    <div id="comments_area">
+    <%= render partial: 'comments/index',locals: { comments: @comments } %>
+    </div>
+    <% if user_signed_in? %>
+    <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
+  <% end %>
+</div>
 
 <%= link_to "TOPへ戻る", root_path %>

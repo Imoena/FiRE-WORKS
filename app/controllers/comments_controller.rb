@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
   def create
    @post = Post.find(params[:post_id])
    @comment = @post.comments.new(comment_params)
+   @comment_reply = @post.comments.new
    @comment.user_id = current_user.id
     if @comment.save
       redirect_back(fallback_location: root_path)
@@ -13,7 +14,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:post_id])
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
     @post = @comment.post
    if @comment.user != current_user
     # リダイレクト先考える
