@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
-
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
 
  def new
  	@post = Post.new
@@ -11,11 +11,10 @@ class PostsController < ApplicationController
  end
 
  def show
- 	@post = Post.find(params[:id])
  	@comments = @post.comments
   @comment = @post.comments.new #投稿全体へのコメント投稿用の変数
   @comment_reply = @post.comments.new #コメントに対する返信用の変数
-  @like = Like.new
+  # @like = Like.new
  end
 
  def create
@@ -25,14 +24,13 @@ class PostsController < ApplicationController
  	if @post.save
  	# リダイレクト先変える
  	   redirect_to post_path(@post)
-
   else
-     redirect_back(fallback_location: root_path)
+     @post = Post.new(post_params)
+     render :new
   end
  end
 
  def edit
-   @post = Post.find(params[:id])
    if @post.user == current_user
       render "edit"
    else
@@ -41,7 +39,6 @@ class PostsController < ApplicationController
  end
 
  def update
-    @post = Post.find(params[:id])
     if @post.update(post_params)
       # flash[:notice] = "You have updated post successfully."
       redirect_to post_path(@post.id)
@@ -52,7 +49,6 @@ class PostsController < ApplicationController
 
 
  def destroy
-	@post = Post.find(params[:id])
 	@post.destroy
 	redirect_to user_path(current_user)
  end
@@ -63,8 +59,13 @@ class PostsController < ApplicationController
  end
 
   private
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
   def post_params
-    params.require(:post).permit(:festival, :prefecture, :city, :transportation, :status, :impressions, :image, :date, :belongings, :rate, :user_id)
+    params.require(:post).permit(:festival, :prefecture, :city, :transportation, :status, :impressions, :image, :date, :belongings, :rate, :user_id, :content)
   end
 
 end

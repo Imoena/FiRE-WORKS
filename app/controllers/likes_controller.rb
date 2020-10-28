@@ -1,19 +1,22 @@
 class LikesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_variables
 
-  def index
-    @user = current_user
+  def like
+    like = current_user.likes.new(post_id: @post.id)
+    like.save
   end
 
-   def create
-    @like = current_user.likes.create(post_id: params[:post_id])
-    redirect_back(fallback_location: root_path)
+  def unlike
+    like = current_user.likes.find_by(post_id: @post.id)
+    like.destroy
   end
 
-  def destroy
-    @like = Like.find_by(post_id: params[:post_id], user_id: current_user.id)
-    @like.destroy
-    redirect_back(fallback_location: root_path)
+  private
+
+  def set_variables
+    @post = Post.find(params[:post_id])
+    @id_name = "#like-link-#{@post.id}"
   end
 
 end

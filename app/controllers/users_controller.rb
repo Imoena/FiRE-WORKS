@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+	def like
+		 @user = current_user
+	end
+
 	def show
 		@user = User.find(params[:id])
 		@posts = @user.posts
