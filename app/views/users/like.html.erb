@@ -1,5 +1,5 @@
 <h3>お気に入り一覧</h3>
-<% @user.liked_posts.each do |post| %>
+<% @user.like_posts.each do |post| %>
   <div>
 	  <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', size:'60x60' %>
 	　<%= post.user.name %>

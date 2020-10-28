@@ -5,7 +5,27 @@
   <h4>花火大会名</h4>
   <%= f.text_field :festival %>
 
- <input class="number" max="5.0" min="0" name="star" step="0.5" type="number" placeholder="強さ(５段階評価)"/>
+ <!-- <input class="number" max="5.0" min="0" name="star" step="0.5" type="number" placeholder="強さ(５段階評価)"/> -->
+
+ <!-- 評価 -->
+  <div id="star">
+    <%= f.label :rate,'評価 '%>
+    <%= f.hidden_field :rate, id: :review_star %>
+  </div>
+
+  <!-- 評価javascript -->
+  <script>
+  $('#star').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    // Postモデルのrateカラムに値を保存する
+    scoreName: 'post[rate]',
+    half: true,
+  });
+  </script>
+
 
   <h4>都道府県名</h4>
     <%= f.select :prefecture, Post.prefectures.keys, {} %>

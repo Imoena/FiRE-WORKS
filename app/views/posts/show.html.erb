@@ -2,6 +2,23 @@
 
 <h4>花火大会名</h4>
   <%= @post.festival %>
+<h4>評価：<%= @post.rate %>点</h4>
+
+ <!--星評価-->
+<div id="star-rate-<%= @post.id %>"></div>
+<script>
+ $('#star-rate-<%= @post.id %>').raty({
+   size: 36,
+   starOff:  '<%= asset_path('star-off.png') %>',
+   starOn : '<%= asset_path('star-on.png') %>',
+   starHalf: '<%= asset_path('star-half.png') %>',
+   half: true,
+   // 読み込み専用
+   readOnly: true,
+   score: <%= @post.rate %>});
+</script>
+<!---------->
+
 <h4>都道府県名</h4>
   <%= @post.prefecture %>
 <h4>市町村名</h4>
@@ -22,13 +39,25 @@
 <% end %>
 
 <!-- お気に入り -->
-<% if current_user.already_liked?(@post) %>
-  <%= link_to post_like_path(@post), method: :delete do %>
-    <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-  <% end %>
-<% else %>
-  <%= link_to post_likes_path(@post), method: :post do %>
-    <i class="fa fa-heart-o" aria-hidden="true"></i>
-  <% end %>
+<%= render partial: 'likes/like',locals: { post: @post } %>
+
+
+<!-- コメント -->
+<h2>コメント一覧</h2>
+<% @comments.each do |comment| %>
+  <div>
+    <%= attachment_image_tag comment.user, :profile_image, :fill, 60, 60, format: 'jpeg', size:'60x60' %>
+    <%= comment.content %>
+    <% if comment.user == current_user %>
+    <%= link_to '削除する', post_comment_path(comment), method: :delete, remote: true %>
+    <% end %>
+  </div>
 <% end %>
-<%= @post.likes.count %>
+<h2>コメント投稿</h2>
+<%= form_with model:[@post, @comment] do |f| %>
+  <%= f.text_field :content %>
+  <br>
+  <%= f.submit 'コメントする' %>
+<% end %>
+
+<%= link_to "TOPへ戻る", root_path %>

@@ -2,16 +2,14 @@ class Post < ApplicationRecord
 	  belongs_to :user
     has_many :comments, dependent: :destroy
     has_many :likes, dependent: :destroy
+    has_many :liking_users, through: :likes, source: :user
     attachment :image
     # liked_usersによって投稿が誰にいいねされているのかを簡単に取得できるようになる
-    has_many :liked_users, through: :likes, source: :user
 
-  #   validates :rate, numericality: {
-  #   less_than_or_equal_to: 5,
-  #   greater_than_or_equal_to: 1
-  # }, presence: true
+    validates :rate, presence: true
+    validates :festival, presence: true
 
-  def self.search(search)
+    def self.search(search)
       if search
         Post.where(['festival LIKE ?', "%#{search}%"])
         Post.where(['city LIKE ?', "%#{search}%"])
