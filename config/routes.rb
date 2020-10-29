@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   end
 
   get 'likes/index'
-
   post   '/like/:post_id' => 'likes#like',   as: 'like'
   delete '/like/:post_id' => 'likes#unlike', as: 'unlike'
 

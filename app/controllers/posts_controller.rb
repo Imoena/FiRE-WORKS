@@ -11,9 +11,10 @@ class PostsController < ApplicationController
  end
 
  def show
- 	@comments = @post.comments
-  @comment = @post.comments.new #投稿全体へのコメント投稿用の変数
-  @comment_reply = @post.comments.new #コメントに対する返信用の変数
+  # .order(created_at: :desc)で新着順になる
+ 	@comments = @post.comments.order(created_at: :desc)
+  @comment = @post.comments.new #投稿全体へのコメント投稿用
+  @comment_reply = @post.comments.new #コメントに対する返信用
   # @like = Like.new
  end
 
