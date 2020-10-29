@@ -1,6 +1,0 @@
-<h4>コメント投稿</h4>
-  <%= form_with(model:[post, comment],remote: true ) do |f| %>
-    <%= f.text_field :content %>
-    <%= f.hidden_field :post_id, value: post.id %>
-  <%= f.submit 'コメントする' %>
-<% end %>

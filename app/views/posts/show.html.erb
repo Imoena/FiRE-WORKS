@@ -43,15 +43,21 @@
 
 
 <!-- コメント -->
-<div>
+
   <h4>コメント</h4>
  <!-- id="comments_area"でこのdiv内をajaxで書き換え -->
     <div id="comments_area">
     <%= render partial: 'comments/index',locals: { comments: @comments } %>
     </div>
+
     <% if user_signed_in? %>
-    <%= render partial: 'comments/form', locals: { comment: @comment, post: @post } %>
-  <% end %>
-</div>
+    <h4>コメント投稿</h4>
+    <%= form_with model:[@post, @comment], data: {remote: true} do |f| %>
+    <%= f.text_field :content %>
+    <%#= f.hidden_field :post_id, value: post.id %>
+    <%= f.submit '送信' %>
+    <% end %>
+    <% end %>
+
 
 <%= link_to "TOPへ戻る", root_path %>
