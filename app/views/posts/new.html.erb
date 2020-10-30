@@ -4,8 +4,9 @@
 <%= form_for(@post, url: posts_path, method: :POST) do |f| %>
   <h4>花火大会名</h4>
   <%= f.text_field :festival %>
+  <h4>開催年月日</h4>
+  <%= f.date_select :date, {end_year: Time.now.year, start_year:1990, use_month_numbers: true} %>
 
- <!-- <input class="number" max="5.0" min="0" name="star" step="0.5" type="number" placeholder="強さ(５段階評価)"/> -->
 
  <!-- 評価 -->
   <div id="star">
@@ -34,10 +35,17 @@
   <h4>感想</h4>
   <%= f.text_area :impressions %>
   <h4>画像</h4>
+  <div>
+  <%= attachment_image_tag @post, :image, fallback: "no-image.jpg", id: "img_prev", format: 'jpeg', size:'200x200' %>
   <%= f.attachment_field :image %>
+  </div>
   <h4>交通手段</h4>
   <%= f.text_field :transportation%>
   <h4>持ち物</h4>
   <%= f.text_field :belongings %>
+  <h4>ステータス</h4>
+   <%= f.select :status, [["下書き", "draft"],["公開", "published"]], id: "status", class: "form-control" %>
   <%= f.submit '投稿' %>
+
 <% end %>
+

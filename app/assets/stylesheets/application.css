@@ -15,8 +15,10 @@
  */
 
 /*-----ヘッダー-----*/
-#nav{
-	list-style: none;
+.f-container{
+	display:flex;
+	flex-diretion: row;
+	justify-content: flex-end;
 }
 
 /*-----post-----*/

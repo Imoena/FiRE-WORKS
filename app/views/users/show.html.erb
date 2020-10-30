@@ -1,10 +1,14 @@
 <h1>マイページ</h1>
+
 <div><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', size:'60x60' %></div>
 <div><%= @user.name %></div>
 <div><%= @user.introduction %></div>
 
+<% if @user.id == current_user.id %>
 <%= link_to "プロフィール編集", edit_user_path(@user) %>
 <%= link_to "お気に入り一覧", like_users_path %>
+<%= link_to "下書き一覧", confirm_users_path %>
+<% end %>
 
 <% @posts.each do |post| %>
 <h4>花火大会名</h4>

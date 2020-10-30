@@ -1,7 +1,13 @@
 <script src="https://kit.fontawesome.com/17810510b7.js" crossorigin="anonymous"></script>
 
+<%= link_to user_path(@post.user) do %>
+<h4><%= attachment_image_tag @post.user, :profile_image, :fill, 60, 60, format: 'jpeg', size:'60x60' %></h4>
+<% end %>
+<h4><%= @post.user.name %>　さん</h4>
 <h4>花火大会名</h4>
   <%= @post.festival %>
+  <h4>日付</h4>
+  <%= @post.date %>
 <h4>評価：<%= @post.rate %>点</h4>
 
  <!--星評価-->
@@ -43,21 +49,8 @@
 
 
 <!-- コメント -->
-
-  <h4>コメント</h4>
- <!-- id="comments_area"でこのdiv内をajaxで書き換え -->
+ 　　<!-- id="comments_area"でこのdiv内をajaxで書き換え -->
     <div id="comments_area">
-    <%= render partial: 'comments/index',locals: { comments: @comments } %>
+    <%= render partial: 'comments/index',locals: { comments: @comments, post: @post, comment: @comment } %>
     </div>
-
-    <% if user_signed_in? %>
-    <h4>コメント投稿</h4>
-    <%= form_with model:[@post, @comment], data: {remote: true} do |f| %>
-    <%= f.text_field :content %>
-    <%#= f.hidden_field :post_id, value: post.id %>
-    <%= f.submit '送信' %>
-    <% end %>
-    <% end %>
-
-
 <%= link_to "TOPへ戻る", root_path %>

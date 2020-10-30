@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update, :destroy] do
     collection do
     get 'like'
+    get 'confirm'
     end
   end
 
