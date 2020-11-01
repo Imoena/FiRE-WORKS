@@ -11,13 +11,13 @@
 // about supported directives.
 //
 //= require jquery
+//= require popper
+//= require bootstrap-sprockets
 // require jquery_ujs
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-//= require popper
-//= require bootstrap-sprockets
 
 $(document).on("turbolinks:load", function(){
   function readURL(input) {
