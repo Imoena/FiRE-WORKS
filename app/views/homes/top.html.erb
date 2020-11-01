@@ -1,2 +1,10 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<h1>TOP</h1>
+
+<% @posts.each do |post| %>
+<h4><%= attachment_image_tag post.user, :profile_image, :fill, 60, 60, format: 'jpeg', size:'60x60' %></h4>
+<h4><%= post.user.name %>　さん</h4>
+<h4>花火大会名</h4>
+  <%= post.festival %>
+  <h4>日付</h4>
+  <%= post.date %>
+<% end %>

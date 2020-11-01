@@ -16,6 +16,8 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require popper
+//= require bootstrap-sprockets
 
 $(document).on("turbolinks:load", function(){
   function readURL(input) {

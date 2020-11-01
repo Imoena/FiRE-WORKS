@@ -38,6 +38,32 @@
 <h4>持ち物</h4>
   <%= @post.belongings %>
 
+   <!-- jQuery -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   <!-- Google maps API -->
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAK7Oj3sQkS90cJI2VczXqYeJy8ZkPd_GY&callback=initMap" async></script>
+   <style>
+        /*500*500で表示させる*/
+        #map{
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+<script>
+  function initMap() {
+    var mapPosition = new google.maps.LatLng( 35.6882495,139.6856557 );//緯度経度
+    var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 17,//ズーム
+    center: mapPosition
+  });
+    var marker = new google.maps.Marker({
+    position: mapPosition,
+    map: map
+    });
+  }
+</script>
+<div id="map"></div>
+
 <!-- 編集、削除 -->
 <% if @post.user.id == current_user.id %>
      <%= link_to "編集", edit_post_path(@post)%>
