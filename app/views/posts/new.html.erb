@@ -15,17 +15,6 @@
   </div>
 
   <!-- 評価javascript -->
-  <script>
-  $('#star').raty({
-    size     : 36,
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    starHalf: '<%= asset_path('star-half.png') %>',
-    // Postモデルのrateカラムに値を保存する
-    scoreName: 'post[rate]',
-    half: true,
-  });
-  </script>
 
 
   <h4>都道府県名</h4>
@@ -49,3 +38,18 @@
 
 <% end %> 
 
+
+  <script>
+     $(function(){
+  //何かしらの処理
+  $('#star').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    // Postモデルのrateカラムに値を保存する
+    scoreName: 'post[rate]',
+    half: true,
+  });
+}); 
+  </script>

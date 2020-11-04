@@ -16,9 +16,11 @@
     <%#= comment.user.name %>
     <%# end %>
     <%= comment.content %>
-    <%= comment.created_at %>
+    <%= l comment.created_at if comment.created_at%>
+    <% if user_signed_in? %>
     <% if comment.user == current_user %>
     <%= link_to '削除する', post_comment_path(post_id: comment.post_id, id: comment.id), method: :delete, remote: true %>
+    <% end %>
     <% end %>
   </div>
 <% end %>

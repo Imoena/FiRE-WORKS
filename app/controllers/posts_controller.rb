@@ -25,7 +25,6 @@ class PostsController < ApplicationController
  	# リダイレクト先変える
  	   redirect_to post_path(@post)
   else
-     @post = Post.new(post_params)
      render :new
   end
  end

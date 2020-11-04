@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
       redirect_to request.referer
    else
       @comment.destroy
-      @comment = Comment.new
+      @new_comment = Comment.new
    end
   end
 
