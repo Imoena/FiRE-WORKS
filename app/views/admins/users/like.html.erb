@@ -1,0 +1,15 @@
+<h3>お気に入り一覧</h3>
+<% @user.like_posts.each do |post| %>
+  <div>
+	  <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg', size:'60x60' %>
+	　<%= post.user.name %>
+	  <%= post.festival %>
+	  <%= post.prefecture %>
+	  <%= post.city %>
+	  <%= attachment_image_tag post, :image, :fill, 60, 60, format: 'jpeg', size:'60x60' %>
+	 <%= link_to "見る", post_path(post) %>
+
+  </div>
+<% end %>
+<%= link_to "マイページ", user_path(@user) %>
+<%= link_to "トップへ戻る", root_path %>

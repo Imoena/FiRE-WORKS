@@ -6,8 +6,13 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		@posts = @user.posts
+		@posts = @user.posts.where(status: :published)  #.published.order("created_at DESC").page(params[:page]).per(10)
 	end
+
+	def confirm
+		@user = current_user
+        @posts = @user.posts.where(status: :draft) #.draft.order("created_at DESC")
+    end
 
 	def edit
 		@user = User.find(params[:id])

@@ -11,8 +11,7 @@ class PostsController < ApplicationController
  end
 
  def show
-  # .order(created_at: :desc)で新着順になる
- 	@comments = @post.comments.order(created_at: :desc)
+ 	@comments = @post.comments
   @comment = @post.comments.new #投稿全体へのコメント投稿用
   @comment_reply = @post.comments.new #コメントに対する返信用
   # @like = Like.new
@@ -66,7 +65,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:festival, :prefecture, :city, :transportation, :status, :impressions, :image, :date, :belongings, :rate, :user_id, :content)
+    params.require(:post).permit(:festival, :prefecture, :city, :transportation, :status, :impressions, :image, :date, :belongings, :rate, :user_id)
   end
 
 end

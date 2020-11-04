@@ -1,0 +1,76 @@
+<script src="https://kit.fontawesome.com/17810510b7.js" crossorigin="anonymous"></script>
+<div class="row">
+<%= link_to user_path(@post.user) do %>
+<h4><%= attachment_image_tag @post.user, :profile_image, format: 'jpeg', size:'80x80' %></h4>
+<% end %>
+  <h2><%= @post.festival %></h2>
+ <!--星評価-->
+<div id="star-rate-<%= @post.id %>"></div>
+<script>
+ $('#star-rate-<%= @post.id %>').raty({
+   size: 36,
+   starOff:  '<%= asset_path('star-off.png') %>',
+   starOn : '<%= asset_path('star-on.png') %>',
+   starHalf: '<%= asset_path('star-half.png') %>',
+   half: true,
+   // 読み込み専用
+   readOnly: true,
+   score: <%= @post.rate %>});
+</script>
+<!---------->
+
+  <%= @post.date %>
+  <%= @post.prefecture %><%= @post.city %>
+</div>
+<div>by<%= @post.user.name %></div>
+
+<div class="row">
+  <%= attachment_image_tag @post, :image, format: 'jpeg', size:'200x200' %>
+  <%= @post.impressions %>
+</div>
+<div>交通手段:<%= @post.transportation %></div>
+<div>持ち物:<%= @post.belongings %></div>
+
+   <!-- jQuery -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   <!-- Google maps API -->
+   <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY']%>" async></script>
+   <style>
+        /*500*500で表示させる*/
+        #map{
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+<script>
+  function initMap() {
+    var mapPosition = new google.maps.LatLng( 35.6882495,139.6856557 );//緯度経度
+    var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 17,//ズーム
+    center: mapPosition
+  });
+    var marker = new google.maps.Marker({
+    position: mapPosition,
+    map: map
+    });
+  }
+</script>
+<div id="map"></div>
+
+<!-- 編集、削除 -->
+<% if @post.user == current_user %>
+     <%= link_to "編集", edit_post_path(@post)%>
+     <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか?" %>
+<% end %>
+
+<!-- お気に入り -->
+<%= render partial: 'likes/like',locals: { post: @post } %>
+
+
+<!-- コメント -->
+ 　　<!-- id="comments_area"でこのdiv内をajaxで書き換え -->
+    <div id="comments_area">
+    <%= render partial: 'comments/index',locals: { comments: @comments, post: @post, comment: @comment } %>
+    </div>
+<%= link_to "TOPへ戻る", root_path %>
+</div>

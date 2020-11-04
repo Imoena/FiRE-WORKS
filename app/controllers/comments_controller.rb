@@ -7,8 +7,9 @@ class CommentsController < ApplicationController
    @comment_reply = @post.comments.new
    @comment.user_id = current_user.id
    if @comment.save
-    flash[:success] = "Comment was successfully created."
+    @comment = Comment.new
    else
+    @comment = Comment.new
       redirect_back(fallback_location: root_path)
     end
   end
@@ -22,6 +23,7 @@ class CommentsController < ApplicationController
       redirect_to request.referer
    else
       @comment.destroy
+      @comment = Comment.new
    end
   end
 

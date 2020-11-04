@@ -11,8 +11,42 @@
 // about supported directives.
 //
 //= require jquery
+//= require popper
+//= require bootstrap-sprockets
 // require jquery_ujs
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+// 投稿、投稿編集画像プレビュー
+$(document).on("turbolinks:load", function(){
+  function readURL(input) {
+    if(input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#img_prev').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#post_image").change(function(){
+    readURL(this);
+  });
+});
+
+// ユーザー編集の画像プレビュー
+$(document).on("turbolinks:load", function(){
+  function readURL(input) {
+    if(input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#img_prev').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#user_profile_image").change(function(){
+    readURL(this);
+  });
+});
