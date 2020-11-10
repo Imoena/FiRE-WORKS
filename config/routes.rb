@@ -31,6 +31,7 @@ Rails.application.routes.draw do
       get 'like'
       get 'confirm'
       get 'search'
+      get 'cancel_confirmation'
       end
     end
 
