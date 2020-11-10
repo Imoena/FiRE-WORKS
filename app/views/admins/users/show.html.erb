@@ -18,12 +18,12 @@
           <td><%= @user.name %></td>
         	<td><%= @user.introduction %></td>
         	<td><%= @user.email %></td>
-    			<td><button type="button" class="btn btn-outline-secondary btn-block"><%= link_to "プロフィール編集", edit_admins_user_path(@user) %></button><br>
-    			<button type="button" class="btn btn-outline-secondary btn-block"><%= link_to "お気に入り一覧", like_admins_users_path %></button><br>
-    			<button type="button" class="btn btn-outline-secondary btn-block"><%= link_to "下書き一覧", confirm_admins_users_path %></button>
+    			<td><%= link_to "プロフィール編集", edit_admins_user_path(@user),class: "btn btn-outline-secondary " %><br>
+          <%= link_to "退会", user_path(@user), class: "destroy-user btn btn-outline-danger",method: :delete, data: {confirm: "本当に退会させますか？"}%></td>
+
           </td>
         </tr>
-    　</tbody>
+      </tbody>
   </table>
 
   <div>投稿一覧</div>

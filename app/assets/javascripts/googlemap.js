@@ -1,5 +1,5 @@
-let map //変数の定義
-let geocoder //変数の定義
+var map //変数の定義
+var geocoder //変数の定義
 
 var marker;
 window.onload = function(){ //コールバック関数
@@ -36,13 +36,13 @@ window.onload = function(){ //コールバック関数
 };
 
 function codeAddress(){ //コールバック関数
-  let inputAddress = document.getElementById('address').value; //'address'というidの値（value）を取得
+  var inputAddress = document.getElementById('address').value; //'address'というidの値（value）を取得
 
   geocoder.geocode( { 'address': inputAddress}, function(results, status) { //ジオコードしたい住所を引数として渡す
     if (status == 'OK') {
-      let lat = results[0].geometry.location.lat(); //ジオコードした結果の緯度
-      let lng = results[0].geometry.location.lng(); //ジオコードした結果の経度
-      let mark = {
+      var lat = results[0].geometry.location.lat(); //ジオコードした結果の緯度
+      var lng = results[0].geometry.location.lng(); //ジオコードした結果の経度
+      var mark = {
           lat: lat, //緯度
           lng: lng  //経度
       };

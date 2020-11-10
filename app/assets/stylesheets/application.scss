@@ -51,6 +51,9 @@ body {
   font-size: 13px;
 }
 
+.btn {
+  margin: 5px;
+}
 /*-----top------*/
 .calender {
   width: 100%;
@@ -58,6 +61,7 @@ body {
 
 .show_img {
     height: 400px;
+    width:  500px;
 }
 
 .show_area {
@@ -70,6 +74,10 @@ body {
 
 .search_results{
 	list-style: none;
+}
+
+.link-style {
+  /*color: #000;*/
 }
 /*------user------*/
 .img-circle {

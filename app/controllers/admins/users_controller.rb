@@ -21,16 +21,13 @@ class Admins::UsersController < ApplicationController
 
 	def edit
 		@user = User.find(params[:id])
+		@user = User.find_by(params[:user_id])
 	end
 
 	def update
 	    @user = User.find(params[:id])
 	    @user.update(user_params)
 	    redirect_to user_path(@user.id)
-	end
-
-	def cancel
-		@user = current_user
 	end
 
 	def destroy
