@@ -1,9 +1,9 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.14.1"
 
-set :application, "FiRE_WORKS"
+set :application, "FiRE-WORKS"
 set :repo_url, "git@github.com:Imoena/FiRE-WORKS.git"
-set :deploy_to, "/home/ec2-user/FiRE_WORKS"
+set :deploy_to, "/home/ec2-user/FiRE-WORKS"
 set :rbenv_ruby, '2.5.7'
 set :linked_files, %w{config/master.key .env}
 append :linked_dirs, "log", "public", "tmp"
