@@ -15,10 +15,55 @@
  */
 
  // Custom bootstrap variables must be set or imported *before* bootstrap.
+@import "simple_calendar";
 @import "bootstrap";
 
-/*-----post-----*/
+/*------共通------*/
+.container {
+}
 
+.main {
+	  margin-top: 200px;
+    background: rgba(255,255,255,1);
+    padding: 50px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+body {
+	  background: #013662;
+    color: #333300;
+}
+
+.location {
+  font-size: 13px;
+}
+
+.profile_name {
+  font-size: 13px;
+}
+
+.festival_name {
+  font-size: 20px;
+}
+
+.create_time {
+  font-size: 13px;
+}
+
+/*-----top------*/
+.calender {
+  width: 100%;
+}
+
+.show_img {
+    height: 400px;
+}
+
+.show_area {
+  margin : 0 auto;
+}
+/*------header------*/
 .navbar {
   background: #013662;
 }
@@ -26,10 +71,25 @@
 .search_results{
 	list-style: none;
 }
+/*------user------*/
+.img-circle {
+  border-radius: 50%;
+}
 
+.intro-area {
+
+}
+
+.my-link {
+  margin: 5px;
+}
+
+
+
+/*-------post-------*/
 .post-block {
   margin: 0.5em;
-  background: white;
+  background: #FFF;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.20);
   display: flex;
   tbody{
@@ -42,22 +102,29 @@
   }
 }
 
-.main {
-	margin-top: 200px;
-    background: rgba(255,255,255,1);
-    /*min-height: 400px;*/
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
+.img_box {
+  padding-top: 30px;
 }
 
-body {
-	background: #013662;
+.impressions_area {
+   padding-top: 30px;
 }
 
+/*.fire-img {*/
+  /*border-radius: 5px*/
+/*}*/
+
+.show {
+  text-align: center;
+}
+
+
+/*------footer------*/
 .footer {
 	  height: 200px;
     background-image: url("tokyo.jpg");
     background-position: 20% 15%;
     background-size: 220%;
 }
+
+/*------about------*/

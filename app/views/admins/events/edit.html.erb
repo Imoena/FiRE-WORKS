@@ -1,0 +1,60 @@
+<h1>大会編集</h1>
+
+  <%= form_for(@event, url: admins_event_path, method: :PATCH) do |f| %>
+<div class="row">
+	<div class="col-6">
+  <form>
+    <div class="form-group">
+	  <%= f.label :花火大会名 %>
+	  <%= f.text_field :festival %>
+    </div>
+    <div class="form-group">
+	  <%= f.label :開催年月日 %>
+	  <%= f.date_field :start_time, { start_year:Time.now.year, end_year:Time.now.year, use_month_numbers: true} %>
+	</div>
+    <div class="form-group">
+	  <%= f.label :都道府県名 %>
+	  <%= f.select :prefecture, Post.prefectures.keys, {} %>
+	</div>
+    <div class="form-group">
+	  <%= f.label :市町村名 %>
+	  <%= f.text_field :city %>
+	</div>
+    <div class="form-group">
+	  <%= f.label :コメント %>
+	  <%= f.text_area :content %>
+	</div>
+    <div class="form-group">
+	  <%= f.label :イメージ %>
+	  <%= attachment_image_tag @post, :event_image, fallback: "no-image.jpg", id: "img_prev", format: 'jpeg', height:200 %>
+	  <%= f.attachment_field :event_image %>
+	</div>
+    <div class="form-group">
+	  <%= f.label :交通情報 %>
+	  <%= f.text_field :transportation%>
+	</div>
+    </div>
+		<div class="col-6">
+		<!-- Googleマップ -->
+	  <%= form_with(model: @event, local: true, multipart: true) do |f| %>
+	    <div class="spot">
+	      <%= f.fields_for :spot do |s| %>
+		      <%= s.label :address, "レビュー場所(Google Mapで検索)", class: 'spot__title' %>
+		      <%= s.text_field :address, placeholder: "スポットを入力", id: "address", class: 'spot__text' %>
+		      <input type="button" onclick="codeAddress()" value="検索する">
+		      <div class="map" id="map" style="height: 350px; width: 350px;"></div>
+          <% end %>
+        </div>
+      <% end %>
+	</div>
+</div>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_KEY']%>"></script>
+      <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+      <script src="//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" type="text/javascript"></script>
+      <!--  -->
+	<div class="form-group">
+	  <%= f.submit '編集する' %>
+    </div>
+  </form>
+</div>
+<% end %>

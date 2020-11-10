@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_04_013129) do
+ActiveRecord::Schema.define(version: 2020_11_09_053432) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -33,6 +33,22 @@ ActiveRecord::Schema.define(version: 2020_11_04_013129) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "festival"
+    t.integer "prefecture", default: 0, null: false
+    t.string "city"
+    t.string "transportation"
+    t.text "content"
+    t.string "event_image_id"
+    t.datetime "start_time"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "date"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -58,6 +74,10 @@ ActiveRecord::Schema.define(version: 2020_11_04_013129) do
     t.string "belongings"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "event_id"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "users", force: :cascade do |t|

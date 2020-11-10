@@ -10,6 +10,14 @@ class User < ApplicationRecord
   has_many :like_posts, through: :likes, source: :post
   attachment :profile_image
 
+  validates :introduction, {length: {maximum: 80}}
+  validates :name, {presence: true, length: { in: 2..20 }}
+ 
+  def self.search(search)
+      search
+        User.where(['name LIKE ? OR email LIKE ?', "%#{search}%", "%#{search}%"])
+  end
+
   enum prefecture:{
      "---":0,
      北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,

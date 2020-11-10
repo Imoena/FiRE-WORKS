@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FiREWorks</title>
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="q1H3L5QkQfnzo6NpWYZG3hpaWek+33GT6a0wyhJnWiN7LXNsNHCDFklJaxHKo/jNHIs3SylsYzOEJ7OvPgh1aQ==" />
+    
+    
+    <link rel="stylesheet" media="all" href="/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/events.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/homes.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/likes.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/application.self-bc7e56120a6611f7e7007b91e09416940a8287a2de43543ec92912c2454ed9ec.css?body=1" data-turbolinks-track="reload" />
+    <script src="/assets/underscore.self-b31fe0845750a5c6fe4ef3b0f4e43d900d95ccd4f6e82378d84eea1eddbbfffb.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/gmaps/base.self-8dd1d1a22a7ff3bf4faa70885ea5f452367e7249102c52508c66d85ca396ee8b.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/gmaps/base/base.self-5c31367e8435d872a028f6605074c8b1e15b9469a128b92dd29dfe40165b8ca3.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/gmaps/objects/base_builder.self-2a2088185a25893bbee6bf3da7fde2f1160e33f9903e29e01701ecdf87326e98.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/gmaps/objects/builder.self-77682740ac05e1b18efcf955f75aabdc3877aeee1ee4d5d6fddc74f8a08009ea.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/gmaps/objects/handler.self-2f220cab5c91a054a6ee7f5b4c1eaab6edd160062ee3709c81714c18a6fbefa3.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/gmaps/objects/null_clusterer.self-c6d6f37e996f50b27bf70e66b8956ee03cd4f3e35ae2e69c7b03e9dff7ea48e3.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/gmaps/google/objects/common.self-4b07ecd5e825fd2ba2793cb0323b0f19636ae2343ad8e8e9fe419152107b8ab4.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/gmaps/google/builders/bound.self-f340597454ebfa045f68c5f93f61cff52646146ec38c903a2769e5b0501cd687.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/gmaps/google/builders/circle.self-188e8cef42efa47cf5a4a3956af3dc67a3d6651bc2a9ca220cfcb6fc3e463e35.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/gmaps/google/builders/clusterer.self-a1f1a7df46fc8cecc592eef0f15b9e02f3431c8fa70ed30ce4de854e7facb5c4.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/gmaps/google/builders/kml.self-ffee6612ec52f7bcd758c1b5370a0e803412189ce09773551831e6c06a3375b1.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/gmaps/google/builders/map.self-6de83910df5426e7f72211a33d291d790c3198744bdced71b84572bfca56201c.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/gmaps/google/builders/marker.self-742a43efffcab09bde1334c67758f411c41e4fa1df3dd5a39e498e7f7e78e27c.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/gmaps/google/builders/polygon.self-08644c000d23e711283ea74461680417f8e6c30fe6c32c3dcb7cc9395e9e3f17.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/gmaps/google/builders/polyline.self-22e88b34eec70842a3547dd072bbf85a45c001b0a479fc11ec22bd242b6703f4.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/gmaps/google/objects/bound.self-d13a639bd7207854bf9ef3f6df82bea172352162b142f56e7032ff7ac9193b1e.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/gmaps/google/objects/circle.self-33825f7d2fed1c7ba3c7afae7bd2e4f616b77373660fb65d895affcc5c952610.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/gmaps/google/objects/clusterer.self-4f2479016fe0e484ef10477924f1bd0df5103bd5d9fca97dacb1a805369eae1d.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/gmaps/google/objects/kml.self-5ec58fa580d178250382b8139e22df32db261af083e6ec63528aec06ac26f9c3.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/gmaps/google/objects/map.self-fbfa0453de0420c083e9daee1f103702e6fb765d977bd361ebca9265c754f1fc.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/gmaps/google/objects/marker.self-1cffb1966c70a5ca4fb34e8ac501dca0e7c42af09f3f99752caa5fc6f09b1d02.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/gmaps/google/objects/polygon.self-ceb351c472231550371b47497b02ad128fbf6e44c30482fb5c153ef880fad696.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/gmaps/google/objects/polyline.self-d6d7caf58094ef9b48b3e93abdcc0f43c6b3fb204c882f4613577480cbe5d857.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/gmaps/google/primitives.self-5b8a3a670839d76c06f9877827daa0d739b27f8d6ebd346d7fc6006819755e65.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/gmaps/google.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/popper.self-55bd1408b0e4ff3edf21524b78fbe2266615c8015ce0e5f0828089b1de27d63c.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/bootstrap/util.self-32c933709f03802cab6990dadb15257dcca78c60790311303e1f69319bb5ec09.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/bootstrap/scrollspy.self-9c4010d9389b7b27e3247fcbb0cc4425f15d7df2d0d3464b9c3a9022632f1dc8.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/bootstrap/collapse.self-f40766e711b829f346a1d3f6ca132348a77eef7cdfd28732ba8afcf2c996dc89.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/bootstrap/alert.self-6174a81cd2fbcf8bc9949957661638e9716cb0390e0fcf29fafcdc0f2351c58f.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/bootstrap/tooltip.self-b2c5fc72d4e22d1516e9713d3ee1ffa6f92ed11722175e2a9b88c3acbe0bbc09.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/bootstrap/popover.self-3d5b251608f27dbdae33a816e4736ae6e8a8e1729af1fc0c10eb234bf0f494c5.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/bootstrap/dropdown.self-7abc7d81497e5228d193f1151e74cd9f683732d7ab3e9654f714a4d75fbd41c0.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/bootstrap/button.self-5e0c9bfb00dc1db87237215c889765533d8b0744d96538915cff2ac0e29a3825.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/bootstrap/modal.self-711cfe854709180e4c826346dd982c6df3eabc0eab949d2a1560201a139dccfa.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/bootstrap/carousel.self-684b442295b055f9cdba73cb596ffdb733024661042cfaee5637c28350efdd28.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/bootstrap/tab.self-f8f47356299f63d5a6828b6954f5e92bf82d85370f16410b5ae89d3e1effdd96.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/bootstrap-sprockets.self-636159b35205da4142a43bc02d2849d77d3ac07a0946211585cde15a9c6ff21f.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/jquery.raty.self-c2e5ccdb64e3acb9f967be84fdc8b76a689b5688ab9d60b531189cd712286e91.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/rails-ujs.self-81c572f39b69ead02e3f97fe43b76954a434591bc2837e3a35af212315e67569.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/activestorage.self-1ed4604ac2170045f1ffca4edb81a75246661555e4f9cf682bb8a21825e32e1c.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/turbolinks.self-569ee74eaa15c1e2019317ff770b8769b1ec033a0f572a485f64c82ddc8f989e.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/action_cable.self-69fddfcddf4fdef9828648f9330d6ce108b93b82b0b8d3affffc59a114853451.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/cable.self-8484513823f404ed0c0f039f75243bfdede7af7919dda65f2e66391252443ce9.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/events.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/googlemap.self-976979249bc5b43673a2c13e8308228364f73ba2e8670e0da3cd8b7f25b4bd04.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/homes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/jquery.japan-map.self-f0bb33d5c502660bd679f60f29d3712eb755081bc1e5eb6794c6160d275b7cb4.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/jquery.japan-map.min.self-5a1168a44e867fc14834db4747d19c0368d92a2c66def361c67e6a1928e12d87.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/application.self-d67cbc31a23d7c5187c8619f1a2ea22d8b55246bbe142b4f4d7a1b356af6ac77.js?body=1" data-turbolinks-track="reload"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  </head>
+
+  <body>
+    <div class='container main'>
+      <div class="row">
+        <div class="col-md-5">test 5</div>
+        <div class="col-md-7">test 7</div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
 	belongs_to :user
+    belongs_to :event, optional: true
     has_many :comments, dependent: :destroy
     has_many :likes, dependent: :destroy
     has_many :liking_users, through: :likes, source: :user
@@ -14,6 +15,7 @@ class Post < ApplicationRecord
       search
         Post.where(['festival LIKE ? OR city LIKE ?', "%#{search}%", "%#{search}%"])
     end
+    
 
    enum prefecture:{
      "---":0,

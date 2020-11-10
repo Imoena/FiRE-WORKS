@@ -6,6 +6,6 @@
 <h4>市町村名</h4>
   <%= post.city %>
 <h4>画像</h4>
-  <%= attachment_image_tag post, :image, format: 'jpeg', size:'60x60' %>
+  <%= attachment_image_tag post, :image, format: 'jpeg', size:'60x60', fallback: "no-image.jpg" %>
   <%= link_to "もっと見る", post_path(post.id) %>
 <% end %>
