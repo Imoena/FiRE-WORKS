@@ -1,0 +1,80 @@
+<script src="https://kit.fontawesome.com/17810510b7.js" crossorigin="anonymous"></script>
+<div class="row">
+  <%= link_to user_path(@post.user) do %>
+    <h4><%= attachment_image_tag @post.user, :profile_image, format: 'jpeg', size:'80x80', class: "img-circle" %></h4>
+  <% end %>
+  <h2><%= @post.festival %></h2>
+
+ <!--星評価-->
+  <div id="star-rate-<%= @post.id %>"></div>
+  <script>
+   $('#star-rate-<%= @post.id %>').raty({
+     size: 36,
+     starOff:  '<%= asset_path('star-off.png') %>',
+     starOn : '<%= asset_path('star-on.png') %>',
+     starHalf: '<%= asset_path('star-half.png') %>',
+     half: true,
+     // 読み込み専用
+     readOnly: true,
+     score: <%= @post.rate %>});
+  </script>
+<!---------->
+
+  <%= @post.date %>
+  <%= @post.prefecture %><%= @post.city %>
+</div>
+<div>by<%= @post.user.name %></div>
+
+<div class="row">
+  <div class="col-xs-12 col-lg-6 img_box">
+    <%= attachment_image_tag @post, :image, format: 'jpeg', size:'400x350', fallback: "no-image.jpg", class: "fire-img" %>
+  </div>
+  <div class="col-xs-12 col-lg-6 impressions_area">
+        <div><%= @post.impressions %></div>
+        <div>おすすめの行き方:<%= @post.transportation %></div>
+        <div>持っていくといいもの:<%= @post.belongings %></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-lg-6">
+    <div class="show">
+          <div class="show__address">
+          <%= @post.address %>
+          </div>
+          <div id="lat_data" style="visibility: hidden;"><%= @lat %></div>
+          <div id="lng_data" style="visibility: hidden;"><%= @lng %></div>
+          <div class="show__maps" id="show_map" style="height: 300px; width: 300px;"></div>
+    </div>
+</div>
+</div>
+
+
+<div class="row">
+</div>
+  <!-- 編集、削除 -->
+  <% if @post.user == current_user %>
+      <%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-secondary btn-sm"%>
+      <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn-outline-secondary btn-sm" %>
+  <% end %>
+
+  <!-- お気に入り -->
+  <% if @post.published? %>
+    <%= render partial: 'users/likes/like',locals: { post: @post } %>
+  <% else %>
+  <% end %>
+
+  <!-- コメント -->
+   　　<!-- id="comments_area"でこのdiv内をajaxで書き換え -->
+   <% if @post.published? %>
+      <div id="comments_area">
+      <%= render partial: 'users/comments/index',locals: { comments: @comments, post: @post, new_comment: @comment } %>
+      </div>
+      <% else %>
+    <% end %>
+  <%= link_to "TOPへ戻る", root_path, class: "btn-outline-secondary btn-sm" %>
+</div>
+
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_KEY']%>"></script>
+      <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+      <script src="//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" type="text/javascript"></script>

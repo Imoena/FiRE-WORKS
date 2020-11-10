@@ -1,0 +1,26 @@
+<h3>お気に入り一覧</h3>
+
+<table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>大会名</th>
+            <th>場所</th>
+            <th>開催年月日</th>
+            <th>投稿したひと</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @user.like_posts.each do |post| %>
+            <tr>
+              <td><%= attachment_image_tag post, :image, format: 'jpeg', size:'60x60', fallback: "no-image.jpg" %></td>
+              <td><%= post.festival %></td>
+              <td><%= post.prefecture %><%= post.city %></td>
+              <td><%= post.date %></td>
+              <td><%= attachment_image_tag post.user, :profile_image, format: 'jpeg', size:'60x60', fallback: "no-image.jpg", class: "img-circle" %><%= post.user.name %></td>
+              <td><%= link_to "見る", post_path(post), class: "btn btn-outline-secondary btn-sm" %></td>
+            </tr>
+            <% end %>
+        </tbody>
+</table>

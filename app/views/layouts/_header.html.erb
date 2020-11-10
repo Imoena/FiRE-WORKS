@@ -37,19 +37,30 @@
 		<li class="nav-item nav-link"><%= link_to "都道府県から探す" %></li>
 		<li class="nav-item nav-link"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
 		<% elsif admin_signed_in? %>
-        <li>管理者</li>
-        <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+        <li class="nav-item nav-link">管理者</li>
+        <li class="nav-item nav-link"><%= link_to "TOP",admins_homes_top_path %></li>
+        <li class="nav-item nav-link"><%= link_to "会員一覧", admins_users_path %></li>
+        <li class="nav-item nav-link"><%= link_to "花火大会一覧", admins_events_path %></li>
+        <li class="nav-item nav-link"><%= link_to "花火大会登録",new_admins_event_path %></li>
+        <li class="nav-item nav-link"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
 	  <% else%>
 	    <li class="nav-item nav-link"><%= link_to "TOP", root_path %></li>
 	    <li class="nav-item nav-link"><%= link_to "ABOUT",homes_about_path %></li>
 		<li class="nav-item nav-link"><%= link_to "都道府県から探す" %></li>
 		<li class="nav-item nav-link"><%= link_to "ログイン", new_user_session_path%></li>
+		<li class="nav-item nav-link"><%= link_to "新規登録", new_user_registration_path%></li>
 	  <% end %>
     </ul>
-
-      <%= form_tag(search_posts_path, class: "form-inline my-2 my-lg-0", :method => 'get') do %>
-      <%= text_field_tag :search %>
-	  <%= submit_tag '検索', :name => nil %>
+      <% if admin_signed_in? %>
+	      <%= form_tag(search_admins_users_path, class: "form-inline my-2 my-lg-0", :method => 'get') do %>
+	      <%= text_field_tag :search %>
+		  <%= submit_tag '検索', :name => nil %>
+		  <% end %>
+	  <% else %>
+		  <%= form_tag(search_posts_path, class: "form-inline my-2 my-lg-0", :method => 'get') do %>
+	      <%= text_field_tag :search %>
+		  <%= submit_tag '検索', :name => nil %>
+	      <% end %>
 	  <% end %>
   </div>
 </nav>

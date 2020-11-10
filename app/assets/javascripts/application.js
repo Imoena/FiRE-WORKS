@@ -10,6 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require underscore
+//= require gmaps/google
 //= require jquery
 //= require popper
 //= require bootstrap-sprockets
@@ -48,6 +50,22 @@ $(document).on("turbolinks:load", function(){
     }
   }
   $("#user_profile_image").change(function(){
+    readURL(this);
+  });
+});
+
+// 管理者の花火大会登録フォームの画像プレビュー
+$(document).on("turbolinks:load", function(){
+  function readURL(input) {
+    if(input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#img_prev').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#event_image").change(function(){
     readURL(this);
   });
 });

@@ -1,0 +1,25 @@
+<h1>登録花火大会一覧</h1>
+<table class="table">
+        <thead>
+          <tr>
+            <th>花火大会ID</th>
+            <th>花火大会名</th>
+            <th>開催日</th>
+            <th>開催場所</th>
+            <th>登録日</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @events.each do |event| %>
+            <tr>
+              <td><%= event.id %></td>
+              <td><%= link_to event.festival, admins_event_path(event) %></td>
+              <!-- <td><%#= l event.start_time, format: :short %></td> -->
+              <td><%= event.start_time %></td>
+              <td><%= event.prefecture %><%= event.city %></td>
+              <td><%= l event.created_at %></td>
+            </tr>
+            <% end %>
+        </tbody>
+</table>
