@@ -15,8 +15,7 @@
             <tr>
               <td><%= event.id %></td>
               <td><%= link_to event.festival, admins_event_path(event) %></td>
-              <!-- <td><%#= l event.start_time, format: :short %></td> -->
-              <td><%= event.start_time %></td>
+              <td><%= l event.start_time, format: :short %></td>
               <td><%= event.prefecture %><%= event.city %></td>
               <td><%= l event.created_at %></td>
             </tr>

@@ -42,6 +42,8 @@ function codeAddress(){ //コールバック関数
     if (status == 'OK') {
       var lat = results[0].geometry.location.lat(); //ジオコードした結果の緯度
       var lng = results[0].geometry.location.lng(); //ジオコードした結果の経度
+      document.getElementById('lat').value = lat;
+      document.getElementById('lng').value = lng;
       var mark = {
           lat: lat, //緯度
           lng: lng  //経度
