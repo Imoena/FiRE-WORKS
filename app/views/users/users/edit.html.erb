@@ -27,12 +27,20 @@
 <% end %>
 
  	<div class="col-xs-12 float-right">
-	<%= link_to "パスワード変更", edit_password_users_path, class: "btn-outline-secondary btn-sm"%>
-	<% if @user.email == "test_user@com" %>
-	<%= link_to "退会する",edit_user_path(current_user), id:"button2", class: "btn-outline-secondary btn-sm" %>
-		<!-- <button id="button2", class='btn-outline-secondary btn-sm'>退会する</button> -->
-		<script>
+ 	<% if @user.email == "test_user@com" %>
+	<%= link_to "パスワード変更", edit_user_path(current_user),id:"button2", class: "btn-outline-secondary btn-sm"%>
+	<script>
 			$('#button2').on('click', function() {
+	        alert("テストユーザーはパスワードを変更できません");
+	        });
+	</script>
+	<% else %>
+	<%= link_to "パスワード変更", edit_password_users_path, class: "btn-outline-secondary btn-sm"%>
+	<% end %>
+	<% if @user.email == "test_user@com" %>
+	<%= link_to "退会する",edit_user_path(current_user), id:"button3", class: "btn-outline-secondary btn-sm" %>
+		<script>
+			$('#button3').on('click', function() {
 	        alert("テストユーザーは退会できません");
 	        });
 		</script>
