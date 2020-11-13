@@ -67,6 +67,11 @@ class Users::PostsController < ApplicationController
     @posts = Post.search(params[:search])
  end
 
+ def prefecture
+  @posts = Post.where(prefecture: params[:prefecture])
+
+ end
+
   private
 
   def set_post
