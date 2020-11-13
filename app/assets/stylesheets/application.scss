@@ -107,7 +107,13 @@ height: auto;
  #map-box{
    padding-left: 50px;
    padding-top: 100px;
-   margin-top: -70px;
+   margin-top: -80px;
+ }
+
+ #calendar-anc{
+   padding-left: 50px;
+   padding-top: 100px;
+   margin-top: -90px;
  }
 
 .top-index {
@@ -152,7 +158,10 @@ height: auto;
   text-decoration: none;
 }
 
-
+.admin-info {
+  font-size: 12px;
+  margin-top: 5px;
+}
 
 /*--------------user--------------*/
 .img-circle {
@@ -180,16 +189,16 @@ height: auto;
 
 /*---------------post--------------*/
 .post-block {
-  margin: 0.5em;
-  background: #FFF;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.20);
+  background: white;
+  box-shadow: 0 0 8px -4px #000;
   display: flex;
+  border-radius: 5px;
   tbody{
     padding: 6px;
     margin-left: auto;
     margin-right: auto;
     td {
-      padding: 4px 0;
+      padding: 5px 0;
     }
   }
 }
@@ -251,6 +260,13 @@ height: auto;
     background-size: 220%;
 }
 
+.right-text {
+  color: #666666;
+  text-align: center;
+  line-height: 150px;
+  font-size: 12px;
+}
+
 /*--------------about--------------*/
 
 .about-img {
@@ -302,6 +318,28 @@ height: auto;
    z-index: 9;
 }
 
+.slideshow-box {
+  width:    100%;
+  margin:   0;
+  padding:  0;
+  position: relative; 
+  z-index: 1; /* 相対位置指定 */
+}
+
+.about-title {
+  width:    100%;
+  font-size:  100%;
+  text-align: center;
+  bottom:   4px;
+  margin:   0;
+  padding:  0;
+  color:    #fff;
+  background: rgba(0,0,0,0.4); /* 帯の透明度 */
+  position: absolute;
+  z-index:999;
+ /* 絶対位置指定 */
+}
+
 /*users/post/show　投稿詳細*/
 #show_map {
   height: 250px;
@@ -319,4 +357,12 @@ height: auto;
 
 #logo {
   
+}
+
+.about-box {
+  text-align: center;
+}
+
+.about-text {
+  margin-top: 80px;
 }

@@ -12,7 +12,7 @@ class Admins::PostsController < ApplicationController
 
  def show
     @comments = @post.comments
-    @user = @comment.user
+    @comment = Comment.new 
     @lat = @post.latitude
     @lng = @post.longitude
     gon.lat = @lat
