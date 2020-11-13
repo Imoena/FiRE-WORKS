@@ -6,7 +6,6 @@ class Users::UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		@comment = @user.comment
 		@posts = @user.posts.where(status: :published)  #.published.order("created_at DESC").page(params[:page]).per(10)
 	end
 

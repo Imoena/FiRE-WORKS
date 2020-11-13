@@ -1,9 +1,10 @@
 class Users::CommentsController < ApplicationController
   before_action :authenticate_user!
 
-  def create
+   def create
    @post = Post.find(params[:post_id])
    @comment = @post.comments.new(comment_params)
+   @comment_reply = @post.comments.new
    @comment.user_id = current_user.id
    if @comment.save
     @comment = Comment.new
