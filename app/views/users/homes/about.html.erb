@@ -1,51 +1,76 @@
 <!------ スライドショー ------>
-<p id="slideshow">
-   <img src="/assets/sunset1.jpg" alt="画像1" class="active">
-   <img src="/assets/sunset2.jpg" alt="画像2">
-   <img src="/assets/sunset3.jpg" alt="画像3">
-   <img src="/assets/sunset4.jpg" alt="画像4">
-   <img src="/assets/sunset6.jpg" alt="画像6">
-</p>
+<div class="slideshow-box">
+   <p id="slideshow">
+      <img src="/assets/sunset1.jpg" alt="画像1" class="active show-img">
+      <img src="/assets/sunset2.jpg" alt="画像2" class="show-img">
+      <img src="/assets/sunset3.jpg" alt="画像3" class="show-img">
+      <img src="/assets/sunset4.jpg" alt="画像4" class="show-img">
+      <img src="/assets/sunset6.jpg" alt="画像6" class="show-img">
+   </p>
 
-<script type="text/javascript">
-function slideSwitch() {
-   var $active = $('#slideshow img.active');
+   <script type="text/javascript">
+   function slideSwitch() {
+      var $active = $('#slideshow img.active');
 
-   if ( $active.length == 0 ) $active = $('#slideshow img:last');
+      if ( $active.length == 0 ) $active = $('#slideshow img:last');
 
-   var $next =  $active.next().length ? $active.next()
-      : $('#slideshow img:first');
+      var $next =  $active.next().length ? $active.next()
+         : $('#slideshow img:first');
 
-   $active.addClass('last-active');
+      $active.addClass('last-active');
 
-   $next.css({opacity: 0.0})
-      .addClass('active')
-      .animate({opacity: 1.0}, 4000, function() {
-           $active.removeClass('active last-active');
-      });
-}
+      $next.css({opacity: 0.0})
+         .addClass('active')
+         .animate({opacity: 1.0}, 4000, function() {
+              $active.removeClass('active last-active');
+         });
+   }
 
-$(function() {
-   setInterval( "slideSwitch()", 7000 );
-});
-</script>
+   $(function() {
+      setInterval( "slideSwitch()", 7000 );
+   });
+   </script>
 
-<p>日本の夏には欠かせない夜空を彩る打ち上げ花火<br>
-   SPOT HANABIでは花火大会が好きな人や<br>
-   これから花火大会に行こうとしている人が<br>
-   感想や情報を共有することができます</p>
+   <p class="about-title">SPOT HANABI</p>
+</div>
+<div class="about-box">
+   <div class="about-text">
+      <h4>SPOT HANABIへようこそ</h4>
+         <p>日本の夏にはかかせない夜空を彩る打ち上げ花火<br>
+            SPOT HANABIでは花火大会の感想,おすすめの行き方,持ち物<br>
+            よく見えるおすすめSPOTを共有することができます<br>
+         </p>
+   </div>
 
-<p>花火大会に行ったけど混雑していてなかなか花火が見られなかった...<br>
-   車で来てみたら駐車場がいっぱいだった...<br>
-   折り畳みの椅子やシートを持っていけばよかった...<br>
-   せっかく花火大会に行ったのに楽しめなかったらもったいないですよね</p>
+   <div class="about-text">
+      <h4>SPOT HANABIのたのしみ方</h4>
+         <p>花火大会に行った感想や情報を投稿できます<br>
+            書き途中の投稿は下書きに保存することができます
+         </p>
 
-<p>ここでは花火大会に行ったユーザーが感想とともにおすすめの行き方や<br>
-   持っていくといいものを共有することができます<br>
-   またオススメの鑑賞SPOTをマップで表示し共有することもできます</p>
+         <p>気に入った投稿はハートアイコンをクリックして<br>
+            お気に入りに追加できます<br>
+            また今までもらったいいねの数がマイページに表示されます
+         </p>
+   </div>
 
-<p>（情報共有して花火大会を楽しみましょう！的な文言を入れる）</p>
+   <div class="about-text">
+      <h4>カレンダーからさがす</h4>
+         <p>ユーザーの投稿はカレンダーからも探すことができます</p>
+            カレンダーからは今年の花火大会の開催日時も確認できます<br>
+         <%= link_to "カレンダーから探す",homes_top_path(anchor: 'calendar-anc'),class: "about-link", class: "btn btn-outline-secondary btn-sm"  %>
+   </div>
 
+   <div class="about-text">
+      <h4>都道府県から探す</h4>
+         <%= link_to "都道府県から探すへ",homes_top_path(anchor: 'map-box'),class: "about-link", class: "btn btn-outline-secondary btn-sm"  %>
+   </div>
 
-
+   <div class="about-text">
+         <p>新規ユーザー登録をしなくても閲覧は可能ですが<br>
+            投稿、コメント、お気に入り登録には会員登録が必要です<br>
+         （かんたんログイン（テストユーザー）をぜひご利用ください）</p>
+         <%= link_to "TOPへ", root_path,class: "about-link", class: "btn btn-outline-secondary btn-sm"  %>
+   </div>
+</div>
 

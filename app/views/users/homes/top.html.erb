@@ -6,8 +6,9 @@
     </div>
 
 <!------ カレンダー ------>
-<h4 class="top-index">カレンダーから探す</h4>
-    <div class="row-xs-12">
+<div id="calendar-anc">
+  <h4 class="top-index">カレンダーから探す</h4>
+   <div class="row-xs-12">
         <div class="calendar col-xs-12">
           <%= month_calendar events: @events do |date, events| %>
     	      <%= date.day %>
@@ -19,6 +20,7 @@
           <% end %>
         </div>
     </div>
+</div>
 
 <!----- クリッカブルマップ ------>
 <%= render partial: 'japan_map' %>
