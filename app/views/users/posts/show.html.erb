@@ -67,7 +67,7 @@
   <div class="col-xs-12 offset-lg-10">
     <!-- 編集、削除 -->
     <% if @post.user == current_user %>
-        <%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-secondary btn-sm"%>
+        <%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-secondary btn-sm", data: {"turbolinks" => false}%>
         <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn-outline-secondary btn-sm" %>
     <% end %>
 
@@ -80,7 +80,7 @@
      　　<!-- id="comments_area"でこのdiv内をajaxで書き換え -->
      <% if @post.published? %>
         <div id="comments_area">
-        <%= render partial: 'users/comments/index',locals: { comments: @comments, post: @post, new_comment: @comment, user: @user} %>
+       <%= render partial: 'users/comments/index',locals: { comments: @comments, post: @post, new_comment: @comment } %>
         </div>
         <% else %>
       <% end %>

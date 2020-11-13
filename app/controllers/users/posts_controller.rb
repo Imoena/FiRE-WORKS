@@ -3,16 +3,17 @@ class Users::PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
  def new
- 	@post = Post.new
+  @post = Post.new
  end
 
  def index
- 	@posts = Post.all
+  @posts = Post.all
  end
 
  def show
- 	@comments = @post.comments
+  @comments = @post.comments
   @comment = @post.comments.new #投稿全体へのコメント投稿用
+  @comment_reply = @post.comments.new #コメントに対する返信用
   @lat = @post.latitude
   @lng = @post.longitude
   gon.lat = @lat
@@ -22,17 +23,18 @@ class Users::PostsController < ApplicationController
  def create
   # Eventテーブルのfestival、prefectureを配列で探してきている
   @event = Event.where(festival: params[:post][:festival], prefecture: params[:post][:prefecture])
- 	@post = Post.new(post_params)
+  @post = Post.new(post_params)
   @post.latitude = params["latitude"]
   @post.longitude = params["longitude"]
- 	@post.user_id = current_user.id
+  @post.user_id = current_user.id
   # festival、prefectureが一致するものがあったらその配列の0番目をとってくる
   if @event.length > 0
   @post.event_id = @event[0].id
   end
   @user = current_user
- 	if @post.save
- 	   redirect_to post_path(@post)
+  if @post.save
+  # リダイレクト先変える
+     redirect_to post_path(@post)
   else
      render :new
   end
@@ -57,17 +59,12 @@ class Users::PostsController < ApplicationController
 
 
  def destroy
-	@post.destroy
-	redirect_to user_path(current_user)
+  @post.destroy
+  redirect_to user_path(current_user)
  end
 
  def search
     @posts = Post.search(params[:search])
- end
-
- def prefecture
-  @posts = Post.where(prefecture: params[:prefecture])
-
  end
 
   private
