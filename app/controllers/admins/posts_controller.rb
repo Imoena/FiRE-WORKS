@@ -12,7 +12,6 @@ class Admins::PostsController < ApplicationController
 
  def show
     @comments = @post.comments
-    @comment = @post.comments.new #投稿全体へのコメント投稿用
     @user = @comment.user
     @lat = @post.latitude
     @lng = @post.longitude
