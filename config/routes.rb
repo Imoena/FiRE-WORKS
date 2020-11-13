@@ -44,7 +44,6 @@ Rails.application.routes.draw do
 
     resources :events
 
-
   end
 
   scope module: :users do
@@ -61,6 +60,7 @@ Rails.application.routes.draw do
     resources :posts do
       collection do
       get 'search'
+      get 'prefecture'
       end
       resources :comments, only: [:new, :create, :destroy]
     end

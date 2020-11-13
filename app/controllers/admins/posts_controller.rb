@@ -13,21 +13,13 @@ class Admins::PostsController < ApplicationController
  def show
     @comments = @post.comments
     @comment = @post.comments.new #投稿全体へのコメント投稿用
-    @comment_reply = @post.comments.new #コメントに対する返信用
-  # @like = Like.new
+    @user = @comment.user
+    @lat = @post.latitude
+    @lng = @post.longitude
+    gon.lat = @lat
+    gon.lng = @lng
  end
 
- def create
- 	@post = Post.new(post_params)
- 	@post.user_id = current_user.id
-    @user = current_user
- 	if @post.save
- 	# リダイレクト先変える
- 	   redirect_to post_path(@post)
-  else
-     render :new
-  end
- end
 
  def edit
  end
@@ -43,8 +35,9 @@ class Admins::PostsController < ApplicationController
 
 
  def destroy
+  @user = @post.user
 	@post.destroy
-	redirect_to user_path(current_user)
+	redirect_to admins_user_path(@user)
  end
 
  def search

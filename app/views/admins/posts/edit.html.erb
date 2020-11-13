@@ -1,45 +1,71 @@
-<h1>投稿編集ページ</h1>
+<h4>投稿編集</h4>
 
-<%= form_for(@post, url: post_path, method: :PATCH) do |f| %>
-  <h4>花火大会名</h4>
-  <%= f.text_field :festival %>
-  <h4>開催年月日</h4>
-  <%= f.date_select :date, {end_year: Time.now.year, start_year:1990, use_month_numbers: true} %>
+<%= form_for(@post, url: admins_post_path, method: :PATCH) do |f| %>
+<div class="row">
 
- <!-- 評価 -->
-  <div id="star">
-    <%= f.label :rate,'評価 '%>
-    <%= f.hidden_field :rate, id: :review_star %>
-  </div>
+    <div class="col-xs-12 col-lg-5">
+      <div class="img_box">
+      <%= attachment_image_tag @post, :image, fallback: "no-image.jpg", id: "img_prev", format: 'jpeg', size:"400x350" %>
+      <%= f.attachment_field :image %>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <%= f.label "花火大会名" %><br>
+        <%= f.text_field :festival,size: "40",placeholder: "隅田川花火大会" %>
+      </div>
+      <div class="form-group">
+       <!-- 評価 -->
+          <div id="star">
+            <%= f.label :rate,'評価 '%>
+            <%= f.hidden_field :rate, id: :review_star %>
+          </div>
 
-  <!-- 評価javascript -->
-  <script>
-  $('#star').raty({
-    size     : 36,
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    starHalf: '<%= asset_path('star-half.png') %>',
-    // Postモデルのrateカラムに値を保存する
-    scoreName: 'post[rate]',
-    half: true,
-  });
-  </script>
-  
-  <h4>都道府県名</h4>
-    <%= f.select :prefecture, Post.prefectures.keys, {} %>
-  <h4>市町村名</h4>
-  <%= f.text_field :city %>
-  <h4>感想</h4>
-  <%= f.text_area :impressions %>
-  <h4>画像</h4>
-  <div>
-  <%= attachment_image_tag @post, :image, fallback: "no-image.jpg", id: "img_prev", format: 'jpeg', size:'200x200' %>
-  <%= f.attachment_field :image %>
-  </div>
-  <h4>交通手段</h4>
-  <%= f.text_field :transportation%>
-  <h4>持ち物</h4>
-  <%= f.text_field :belongings %>
-  <%= f.select :status, [["下書き", "draft"],["公開", "published"]], id: "status", class: "form-control" %>
-  <%= f.submit '編集' %>
-<% end %>
+       <!-- 評価javascript -->
+          <script>
+             $(function(){
+          //何かしらの処理
+          $('#star').raty({
+            size     : 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            // Postモデルのrateカラムに値を保存する
+            scoreName: 'post[rate]',
+            half: true,
+          });
+        }); 
+          </script>
+      </div>
+      <div class="form-group">
+        <%= f.label "行った日付" %><br>
+        <%= f.date_select :date, {end_year: Time.now.year, start_year:1990, use_month_numbers: true} %>
+      </div>
+      <div class="form-group">
+        <%= f.label "都道府県" %><br>
+        <%= f.select :prefecture, Post.prefectures.keys, {} %>
+      </div>
+      <div class="form-group">
+        <%= f.label "市区町村名" %><br>
+        <%= f.text_field :city,size: "40",placeholder: "江東区" %>
+      </div>
+      <div class="form-group">
+        <%= f.label "おすすめの行き方" %><br>
+        <%= f.text_field :transportation,size: "60"%>
+      </div>
+      <div class="form-group">
+        <%= f.label "持っていくといいもの" %><br>
+        <%= f.text_field :belongings, size: "60" %>
+      </div>
+      <div class="form-group">
+        <%= f.label "詳しく" %><br>
+        <%= f.text_area :impressions, size: "60x10" %>
+      </div>
+      <div class="form-group">
+        <%= f.select :status, [["下書き", "draft"],["公開", "published"]], id: "status", class: "form-control" %>
+        <%= f.submit('編集',class: 'btn btn-dark')%>
+      </div>
+    </div>
+
+</div>
+  <% end %>

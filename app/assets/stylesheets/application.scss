@@ -18,7 +18,7 @@
 @import "simple_calendar";
 @import "bootstrap";
 
-/*------共通------*/
+/*--------------共通--------------*/
 .container {
 }
 
@@ -28,6 +28,16 @@
     padding: 50px;
     margin-bottom: 20px;
     border-radius: 10px;
+}
+
+.entire-link-style{
+    color: #696969;
+    font-size: 15px;
+    text-decoration: none;
+}
+.entire-link-style:hover{
+  color: #013662;
+  text-decoration: none;
 }
 
 body {
@@ -70,7 +80,7 @@ max-width: 100%;
 height: auto;
 }
 }
-/*-----top------*/
+/*-------------top--------------*/
 .calender {
   width: 100%;
 }
@@ -93,7 +103,32 @@ height: auto;
     left: 10px !important;
     z-index: 100;
  }
-/*------header------*/
+
+ #map-box{
+   padding-left: 50px;
+   padding-top: 100px;
+   margin-top: -70px;
+ }
+
+.top-index {
+  padding-left: 50px;
+  padding-top: 50px;
+  padding-bottom: 20px
+}
+
+ #map-container {
+  padding-left: 100px;
+ }
+
+ .calendar-link-style {
+  color: #333300;
+  font-size: 15px;
+ }
+ .calendar-link-style:hover {
+  color: #013662;
+  text-decoration: none;
+ }
+/*--------------header--------------*/
 .navbar {
   background: #013662;
 }
@@ -104,22 +139,22 @@ height: auto;
 
 .navbar-toggler {
    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-  /*border-color: #ffffff;
-  background-color: #ffffff;*/
 }
 
 .link-style {
     color: #666666;
-    font-size: 13px;
+    font-size: 14px;
+    text-decoration: none;
 }
 
 .link-style:hover{
   color:#ffffe0;
+  text-decoration: none;
 }
 
 
 
-/*------user------*/
+/*--------------user--------------*/
 .img-circle {
   border-radius: 50%;
 }
@@ -132,9 +167,18 @@ height: auto;
   margin: 5px;
 }
 
+/*--総いいね数--*/
+.fa-stack {
+  color: #ff6347;
+  font-size: 3em;  /* アイコン全体の大きさ */
+}
+.fa-stack-1x {
+  font-size: 0.7em;
+  color: #333300;
+  font-family: monospace;
+}
 
-
-/*-------post-------*/
+/*---------------post--------------*/
 .post-block {
   margin: 0.5em;
   background: #FFF;
@@ -154,24 +198,52 @@ height: auto;
   padding-top: 30px;
 }
 
+.impressions_content {
+  border: 1px solid;
+  border-color: #dcdcdc;
+  border-radius: 3px;
+  padding:30px;
+  margin-top: 5px;
+}
+
+.user-name {
+  text-align: right;
+}
+
 .impressions_area {
    padding-top: 30px;
+
 }
 
-/*.fire-img {*/
-  /*border-radius: 5px*/
-/*}*/
-
-.show {
-  text-align: center;
-}
-
-.test {
+.impressions-field {
   word-wrap: break-word;
 }
 
+.impressions-box {
+  min-height: 100px;
+}
 
-/*------footer------*/
+.like-style {
+    color: #666666;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.like-style:hover{
+    color: #000;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.like-link {
+  text-align:right
+}
+
+.impressions-item {
+  color: #666666;
+}
+
+/*--------------footer--------------*/
 .footer {
 	  height: 200px;
     background-image: image-url("tokyo.jpg");
@@ -179,7 +251,7 @@ height: auto;
     background-size: 220%;
 }
 
-/*------about------*/
+/*--------------about--------------*/
 
 .about-img {
   background-image: image-url("sunset.jpg");
@@ -191,12 +263,9 @@ height: auto;
   background-image: image-url("ramune.jpg");
   background-size: cover;
   height: 500px;
-  
-}
-.about-text-box1{
-  width: 40%;
-  height: 830px;
-  background-color: rgba( 0, 0, 0, 0.5); /* 背景色を半透明の黒にする */
+  background-color:rgba(255,255,255,0.2);
+  background-blend-mode:lighten;
+
 }
 .about-img2 {
   background-image: image-url("goldfish.jpg");
@@ -211,9 +280,31 @@ height: auto;
 
 }
 
+#slideshow {
+   position: relative;
+   width: 1000px; /* 画像の横幅に合わせて記述 */
+   height: 650px; /* 画像の高さに合わせて記述 */
+}
+#slideshow img {
+   position: absolute;
+   top: 0;
+   left:0;
+   z-index: 8;
+   opacity: 0.0;
+   width:  1000px; /* 画像の横幅に合わせて記述 */
+   height: 650px; /* 画像の高さに合わせて記述 */
+}
+#slideshow img.active {
+   z-index: 10;
+   opacity: 1.0;
+}
+#slideshow img.last-active {
+   z-index: 9;
+}
+
 /*users/post/show　投稿詳細*/
 #show_map {
-  height: 300px;
+  height: 250px;
   width: 300px;
   margin-top: 30px;
 }
