@@ -13,7 +13,6 @@ class Users::PostsController < ApplicationController
  def show
  	@comments = @post.comments
   @comment = @post.comments.new #投稿全体へのコメント投稿用
-  @comment_reply = @post.comments.new #コメントに対する返信用
   @lat = @post.latitude
   @lng = @post.longitude
   gon.lat = @lat
@@ -33,7 +32,6 @@ class Users::PostsController < ApplicationController
   end
   @user = current_user
  	if @post.save
- 	# リダイレクト先変える
  	   redirect_to post_path(@post)
   else
      render :new
@@ -65,6 +63,11 @@ class Users::PostsController < ApplicationController
 
  def search
     @posts = Post.search(params[:search])
+ end
+
+ def prefecture
+  @posts = Post.where(prefecture: params[:prefecture])
+
  end
 
   private

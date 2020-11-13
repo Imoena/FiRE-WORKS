@@ -14,7 +14,7 @@
           <% @users.each do |user| %>
             <tr>
               <td><%= user.id %></td>
-              <td><%= link_to user.name, admins_user_path(user) %></td>
+              <td><%= link_to user.name, admins_user_path(user) , class: "entire-link-style"%></td>
               <td><%= attachment_image_tag user, :profile_image, format: 'jpeg', size:'40x40', fallback: "no-image.jpg" %></td>
               <td><%= user.email %></td>
               <td><%= l user.created_at, format: :short %></td>

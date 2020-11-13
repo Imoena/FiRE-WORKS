@@ -1,4 +1,4 @@
-<h1>管理者画面TOP</h1>
+<h4>こちらは管理者画面です</h4>
 
 <div class="row-12">
     <div class="calendar col-xs-12">
@@ -6,7 +6,7 @@
 	      <%= date.day %>
 	      <% events.each do |event| %>
 		    <div>
-		      <%= link_to event.festival, admins_event_path(event) %>
+		      <%= link_to event.festival, admins_event_path(event), class: "calendar-link-style", data: {"turbolinks" => false} %>
 		    </div>
           <% end %>
       <% end %>

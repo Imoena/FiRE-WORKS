@@ -14,9 +14,8 @@
 	          <td><%= @event.festival%></td>
 	        </tr>
 	        <tr>
-	          <td>開催時間</td>
-	          <!-- <td><%#= l @event.start_time,format: :short %></td> -->
-	          <%= l @event.start_time,format: :short %>
+	          <td>開催日時</td>
+	           <td><%= l @event.start_time %>~<td>
 	        </tr>
 	        <tr>
 	          <td>開催場所</td>
@@ -47,8 +46,8 @@
       <div id="lng_data" style="visibility: hidden;"><%= @lng %></div>
       <div class="show__maps" id="show_map" style="height: 350px; width: 350px;"></div>
     </div>
-  	<%= link_to "編集", edit_admins_event_path(@event)%>
-    <%= link_to "削除", admins_event_path(@event), method: :delete, "data-confirm" => "本当に消しますか?" %>
+  	<%= link_to "編集", edit_admins_event_path(@event), class: "destroy-user btn btn-outline-secondary", data: {"turbolinks" => false}%>
+    <%= link_to "削除", admins_event_path(@event), method: :delete, "data-confirm" => "本当に消しますか?", class: "destroy-user btn btn-outline-danger" %>
   </div>
 </div>
 

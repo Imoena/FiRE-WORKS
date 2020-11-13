@@ -1,38 +1,26 @@
 <!------ スライドショー ------>
- <div class="row">
-    <div id="slider">
-        <div class="show_item"><img class="show_img" src="/assets/show1.jpg"></div>
-        <div class="show_item"><img class="show_img" src="/assets/show2.jpg"></div>
-        <div class="show_item"><img class="show_img" src="/assets/show3.jpg"></div>
-    </div>
-</div>
+s <p id="slideshow">
+</p>
 
-    <script>
-    $(function(){
-    $('#slider').slick({
-      dots: true, //スライドの下にドットのナビゲーションを表示
-      autoplay: true, //自動再生
-      autoplaySpeed: 4000, //再生スピード
-      // responsive: [{
-      // breakpoint: 768, //画面幅768pxで以下のセッティング
-      // }]
-    });
-    });
-    </script>
-<div class="about-img"></div>
-<div class="about-img1">
-  <div class="about-text-box1">
-    <p></p>
-  </div>
-</div>
-<div class="about-img2">
-<div class="about-text-box2">
-    <p></p>
-  </div>
-</div>
-<div class="about-img3">
-<div class="about-text-box3">
-    <p></p>
-  </div>
-</div>
+<script type="text/javascript">
+function slideSwitch() {
+   var $active = $('#slideshow img.active');
 
+   if ( $active.length == 0 ) $active = $('#slideshow img:last');
+
+   var $next =  $active.next().length ? $active.next()
+      : $('#slideshow img:first');
+
+   $active.addClass('last-active');
+
+   $next.css({opacity: 0.0})
+      .addClass('active')
+      .animate({opacity: 1.0}, 4000, function() {
+           $active.removeClass('active last-active');
+      });
+}
+
+$(function() {
+   setInterval( "slideSwitch()", 7000 );
+});
+</script>

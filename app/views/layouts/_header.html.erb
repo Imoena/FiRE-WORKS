@@ -9,18 +9,18 @@
   <div class="collapse navbar-collapse" id="target">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-		    <li class="nav-item nav-link" style="color: #c0c0c0;"><%= "#{current_user.name}" %> さん</li>
+		    <li class="nav-item nav-link" style="color: #ffffe0;"><%= "#{current_user.name}" %> さん</li>
 			<li class="nav-item nav-link"><%= link_to "TOP", root_path,class: "link-style" %></li>
-			<li class="nav-item nav-link"><%= link_to "新規投稿", new_post_path ,class: "link-style"%></li>
+			<li class="nav-item nav-link"><%= link_to "新規投稿", new_post_path ,class: "link-style", data: {"turbolinks" => false}%></li>
 			<li class="nav-item nav-link"><%= link_to "マイページ", user_path(current_user),class: "link-style" %></li>
 			<li class="nav-item nav-link"><%= link_to "都道府県から探す",homes_top_path(anchor: 'map-box'),class: "link-style" %></li>
 			<li class="nav-item nav-link"><%= link_to "ログアウト", destroy_user_session_path, method: :delete ,class: "link-style"%></li>
 		<% elsif admin_signed_in? %>
-	        <li class="nav-item nav-link" style="color: #c0c0c0;">管理者</li>
+	        <li class="nav-item nav-link" style="color: #ffffe0;">管理者</li>
 	        <li class="nav-item nav-link"><%= link_to "TOP",admins_homes_top_path,class: "link-style" %></li>
 	        <li class="nav-item nav-link"><%= link_to "会員一覧", admins_users_path,class: "link-style" %></li>
 	        <li class="nav-item nav-link"><%= link_to "花火大会一覧", admins_events_path,class: "link-style" %></li>
-	        <li class="nav-item nav-link"><%= link_to "花火大会登録",new_admins_event_path,class: "link-style" %></li>
+	        <li class="nav-item nav-link"><%= link_to "花火大会登録",new_admins_event_path,class: "link-style", data: {"turbolinks" => false} %></li>
 	        <li class="nav-item nav-link"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: "link-style" %></li>
 	  <% else%>
 		    <li class="nav-item nav-link"><%= link_to "TOP", root_path,class: "link-style" %></li>

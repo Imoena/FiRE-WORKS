@@ -4,7 +4,7 @@
           <tr>
             <th>花火大会ID</th>
             <th>花火大会名</th>
-            <th>開催日</th>
+            <th>開催日時</th>
             <th>開催場所</th>
             <th>登録日</th>
           </tr>
@@ -14,8 +14,8 @@
           <% @events.each do |event| %>
             <tr>
               <td><%= event.id %></td>
-              <td><%= link_to event.festival, admins_event_path(event) %></td>
-              <td><%= l event.start_time, format: :short %></td>
+              <td><%= link_to event.festival, admins_event_path(event), class: "entire-link-style", data: {"turbolinks" => false} %></td>
+              <td><%= l event.start_time %>~</td>
               <td><%= event.prefecture %><%= event.city %></td>
               <td><%= l event.created_at %></td>
             </tr>

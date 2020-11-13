@@ -1,6 +1,6 @@
-<script src="https://kit.fontawesome.com/17810510b7.js" crossorigin="anonymous"></script>
 <div class="row offset-3">
 
+<!----------- 見出し ---------->
     <h2><%= @post.festival %></h2>
 
     <!--星評価-->
@@ -16,68 +16,76 @@
        readOnly: true,
        score: <%= @post.rate %>});
     </script>
-    <!---------->
 
     <span><%= @post.date %></span>
     <span><%= @post.prefecture %><%= @post.city %></span>
 
   </div>
-  <div class="row offset-8">
-    <%= link_to user_path(@post.user) do %>
+<!--------- ここまで --------->
+
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-lg-5">
+    <%= attachment_image_tag @post, :image, format: 'jpeg', size:'300x250', fallback: "no-image.jpg", class: "fire-img" %>
+    <!-- google maps -->
+        <div class="show">
+              <div class="show__address">
+              <%= @post.address %>
+              </div>
+              <div id="lat_data" style="visibility: hidden;"><%= @lat %></div>
+              <div id="lng_data" style="visibility: hidden;"><%= @lng %></div>
+              <div class="show__maps" id="show_map"></div>
+        </div>
+  </div>
+  <div class="col-xs-12 col-md-6 col-lg-6">
+    <div class="user-name"><%= link_to user_path(@post.user) do %>
     <%= attachment_image_tag @post.user, :profile_image, format: 'jpeg', size:'50x50', class: "img-circle" %>
-    <% end %><br>
-    <div>by<%= @post.user.name%></div>
-  </div>
-
-
-<div class="row">
-  <div class="col-xs-12 col-md-6 col-lg-5 offset-lg-1 img_box">
-    <%= attachment_image_tag @post, :image, format: 'jpeg', size:'400x350', fallback: "no-image.jpg", class: "fire-img" %>
-  </div>
-  <div class="col-xs-12 col-md-6 col-lg-5 impressions_area">
-        <p class="test"><%= @post.impressions %></p>
-        <div>おすすめの行き方:<%= @post.transportation %></div>
-        <div>持っていくといいもの:<%= @post.belongings %></div>
-  </div>
-</div>
-<!-- google maps -->
-<div class="row">
-  <div class="col-xs-12 col-lg-6 offset-lg-1">
-    <div class="show">
-          <div class="show__address">
-          <%= @post.address %>
-          </div>
-          <div id="lat_data" style="visibility: hidden;"><%= @lat %></div>
-          <div id="lng_data" style="visibility: hidden;"><%= @lng %></div>
-          <div class="show__maps" id="show_map"></div>
-    </div>
-</div>
-</div>
-
-
-<div class="row">
-</div>
-  <!-- 編集、削除 -->
-  <% if @post.user == current_user %>
-      <%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-secondary btn-sm"%>
-      <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn-outline-secondary btn-sm" %>
-  <% end %>
-
-  <!-- お気に入り -->
-  <% if @post.published? %>
-    <%= render partial: 'users/likes/like',locals: { post: @post } %>
-  <% else %>
-  <% end %>
-
-  <!-- コメント -->
-   　　<!-- id="comments_area"でこのdiv内をajaxで書き換え -->
-   <% if @post.published? %>
-      <div id="comments_area">
-      <%= render partial: 'users/comments/index',locals: { comments: @comments, post: @post, new_comment: @comment } %>
-      </div>
-      <% else %>
     <% end %>
-  <%= link_to "TOPへ戻る", root_path, class: "btn-outline-secondary btn-sm" %>
+    by<%= @post.user.name%></div>
+    <div class="impressions_content">
+        <h6 class="impressions-item">感想:</h6>
+        <div class="impressions-box">
+          <p class="impressions-field"><%= @post.impressions %></p>
+        </div>
+    </div>
+    <div class="impressions_content">
+        <h6 class="impressions-item">おすすめの行き方:</h6>
+        <div><%= @post.transportation %></div>
+    </div>
+    <div class="impressions_content">
+          <h6 class="impressions-item">持ち物:</h6>
+          <div><%= @post.belongings %></div>
+    </div>
+    <!-- お気に入り -->
+    <% if @post.published? %>
+      <%= render partial: 'users/likes/like',locals: { post: @post } %>
+    <% else %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 offset-lg-10">
+    <!-- 編集、削除 -->
+    <% if @post.user == current_user %>
+        <%= link_to "編集", edit_post_path(@post), class: "btn btn-outline-secondary btn-sm"%>
+        <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に消しますか?", class: "btn-outline-secondary btn-sm" %>
+    <% end %>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 offset-lg-3">
+    <!-- コメント -->
+     　　<!-- id="comments_area"でこのdiv内をajaxで書き換え -->
+     <% if @post.published? %>
+        <div id="comments_area">
+        <%= render partial: 'users/comments/index',locals: { comments: @comments, post: @post, new_comment: @comment, user: @user} %>
+        </div>
+        <% else %>
+      <% end %>
+    <%= link_to "TOPへ戻る", root_path, class: "btn-outline-secondary btn-sm" %>
+  </div>
 </div>
 
       <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_KEY']%>"></script>

@@ -12,7 +12,16 @@
 		    <%= f.select :prefecture, User.prefectures.keys, {} %>
 		 <h5>自己紹介</h5>
 			<%= f.text_area :introduction, :size=>"20x5" %>
-			<%= f.submit '編集する' %>
+			<% if @user.email == "test_user@com" %>
+			<%= link_to "編集する",edit_admins_user_path(@user), id:"button6", class: "btn btn-dark" %>
+			<script>
+				$('#button6').on('click', function() {
+                alert("テストユーザーは編集できません");
+                });
+			</script>
+			<% else %>
+			<%= f.submit '編集する',class: "btn btn-dark" %>
+			<% end %>
 		 <div>
 		 </div>
 		</div>
