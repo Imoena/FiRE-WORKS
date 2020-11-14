@@ -1,6 +1,8 @@
 var map //変数の定義
 var geocoder //変数の定義
 
+// クリックしたところにマーカーを落とす
+
 var marker;
 window.onload = function(){ //コールバック関数
   geocoder = new google.maps.Geocoder() //GoogleMapsAPIジオコーディングサービスにアクセス
@@ -34,6 +36,8 @@ window.onload = function(){ //コールバック関数
     });
   }
 };
+
+// 検索したところにマーカーを落とす
 
 function codeAddress(){ //コールバック関数
   var inputAddress = document.getElementById('address').value; //'address'というidの値（value）を取得
