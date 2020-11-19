@@ -22,7 +22,8 @@
 花火大会に行った後の感想共有をしたいとき
 
 ## 設計書
-未作成
+ER図、ワイヤーフレームhttps://drive.google.com/file/d/1vK6O746EsH7lZpNfdwdohMbq46_zHiJ3/view?usp=sharing
+
 
 ### 機能一覧
 <https://docs.google.com/spreadsheets/d/1kFK1NlEGfpggOCQ_fVVI-rBdTfBYqRs3D37NXRy31w0/edit#gid=0>
