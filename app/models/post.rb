@@ -9,6 +9,8 @@ class Post < ApplicationRecord
     validates :rate, presence: true
     validates :festival, presence: true
 
+
+
     enum status: { draft: 0, published: 1 }
 
     def self.search(search)
