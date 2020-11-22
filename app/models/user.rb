@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   validates :introduction, {length: {maximum: 80}}
   validates :name, {presence: true, length: { in: 2..20 }}
- 
+
   def self.search(search)
       search
         User.where(['name LIKE ? OR email LIKE ?', "%#{search}%", "%#{search}%"])

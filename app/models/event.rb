@@ -5,6 +5,15 @@ class Event < ApplicationRecord
 	geocoded_by :address
     after_validation :geocode
 
+    validates :festival, presence: true
+    validates :city, presence: true
+    validates :transportation, presence: true
+    validates :content, presence: true
+    validates :start_time, presence: true
+    validates :latitude, presence: true
+    validates :longitude, presence: true
+
+
 	enum prefecture:{
      "---":0,
      北海道:1,青森県:2,岩手県:3,宮城県:4,秋田県:5,山形県:6,福島県:7,

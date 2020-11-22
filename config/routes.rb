@@ -43,7 +43,6 @@ Rails.application.routes.draw do
     end
 
     resources :events
-
   end
 
   scope module: :users do
