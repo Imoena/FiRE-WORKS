@@ -12,7 +12,7 @@ class Users::PostsController < ApplicationController
 
  def show
   @comments = @post.comments
-  @comment = Comment.new 
+  @comment = Comment.new
   @lat = @post.latitude
   @lng = @post.longitude
   gon.lat = @lat
@@ -68,7 +68,7 @@ class Users::PostsController < ApplicationController
 
  def prefecture
   @posts = Post.where(prefecture: params[:prefecture])
-
+  @prefecture = params[:prefecture]
  end
 
   private

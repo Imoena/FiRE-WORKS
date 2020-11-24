@@ -1,3 +1,6 @@
-<h4>都道府県別投稿一覧</h4>
-
+<% if @posts.present? %>
+<h4><%= @posts.last.prefecture %>の投稿一覧</h4>
+<% else %>
+<h4>投稿がありません</h4>
+<% end %>
 <%= render partial: 'users/posts/index',locals: { posts: @posts } %>
