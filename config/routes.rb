@@ -39,7 +39,7 @@ Rails.application.routes.draw do
       collection do
       get 'search'
       end
-      resources :comments, only: [:new, :create, :destroy]
+      resources :comments, only: [:create, :destroy]
     end
 
     resources :events
@@ -61,7 +61,7 @@ Rails.application.routes.draw do
       get 'search'
       get 'prefecture'
       end
-      resources :comments, only: [:new, :create, :destroy]
+      resources :comments, only: [:create, :destroy]
     end
 
     resources :events, only: [:index, :show]
