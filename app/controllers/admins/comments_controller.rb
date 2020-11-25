@@ -1,31 +1,12 @@
 class Admins::CommentsController < ApplicationController
   before_action :authenticate_admin!
 
-  def create
-   @post = Post.find(params[:post_id])
-   @comment = @post.comments.new(comment_params)
-   @user = comment.user
-   @comment_reply = @post.comments.new
-   @comment.user_id = current_user.id
-   if @comment.save
-    @comment = Comment.new
-   else
-    @comment = Comment.new
-      redirect_back(fallback_location: root_path)
-    end
-  end
-
   def destroy
     @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
     @post = @comment.post
-   if @comment.user != current_user
-    # リダイレクト先考える
-      redirect_to request.referer
-   else
-      @comment.destroy
-      @new_comment = Comment.new
-   end
+    @comment.destroy
+    @new_comment = Comment.new
   end
 
   private

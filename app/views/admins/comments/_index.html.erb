@@ -16,8 +16,6 @@
     <% end %>
     <%= comment.content %>
     <%= comment.created_at %>
-    <% if window.user == Admin %>
-    <%= link_to '削除する', post_comment_path(comment.post_id, comment.id), method: :delete, remote: true %>
-    <% end %>
+    <%= link_to '削除する', admins_post_comment_path(comment.post_id, comment.id), method: :delete, remote: true,class: "btn btn-outline-secondary btn-sm"  %>
   </div>
 <% end %>

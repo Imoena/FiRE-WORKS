@@ -68,7 +68,6 @@ class Users::PostsController < ApplicationController
 
  def prefecture
   @posts = Post.where(prefecture: params[:prefecture])
-  @prefecture = params[:prefecture]
  end
 
   private
