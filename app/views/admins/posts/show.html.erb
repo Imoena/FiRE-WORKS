@@ -77,7 +77,7 @@
      　　<!-- id="comments_area"でこのdiv内をajaxで書き換え -->
      <% if @post.published? %>
         <div id="comments_area">
-        <%= render partial: 'users/comments/index',locals: { comments: @comments, post: @post, new_comment: @comment, user: @user } %>
+        <%= render partial: 'admins/comments/index',locals: { comments: @comments, post: @post, new_comment: @comment, user: @user } %>
         </div>
         <% else %>
       <% end %>
