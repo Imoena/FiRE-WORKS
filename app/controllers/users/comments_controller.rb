@@ -4,7 +4,6 @@ class Users::CommentsController < ApplicationController
    def create
    @post = Post.find(params[:post_id])
    @comment = @post.comments.new(comment_params)
-   @comment_reply = @post.comments.new
    @comment.user_id = current_user.id
    if @comment.save
     @comment = Comment.new
