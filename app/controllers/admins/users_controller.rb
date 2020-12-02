@@ -30,11 +30,18 @@ class Admins::UsersController < ApplicationController
 	    redirect_to user_path(@user.id)
 	end
 
-	def destroy
-	    @user = User.find(params[:id])
-	    @user.destroy
-	    flash[:success] = 'ご利用ありがとうございました'
-	    redirect_to :root
+	# def destroy
+	#     @user = User.find(params[:id])
+	#     @user.destroy
+	#     flash[:success] = 'ご利用ありがとうございました'
+	#     redirect_to :root
+    #    end
+
+    def hide
+        @user = User.find(params[:id])
+        @user.update(is_deleted: true)
+        flash[:notice] = "退会処理が完了しました。"
+        redirect_to admins_users_path
     end
 
     def search

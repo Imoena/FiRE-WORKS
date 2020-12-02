@@ -35,11 +35,19 @@ class Users::UsersController < ApplicationController
 		@user = current_user
 	end
 
-	def destroy
-	    @user = User.find(params[:id])
-	    @user.destroy
-	    flash[:success] = 'ご利用ありがとうございました'
-	    redirect_to :root
+	# def destroy
+	#     @user = User.find(params[:id])
+	#     @user.destroy
+	#     flash[:success] = 'ご利用ありがとうございました'
+	#     redirect_to :root
+    # end
+
+    def hide
+        @user = User.find(params[:id])
+        @user.update(is_deleted: true)
+        reset_session
+        flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
+        redirect_to root_path
     end
 
     private
