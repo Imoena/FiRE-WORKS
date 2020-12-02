@@ -10,6 +10,11 @@ class User < ApplicationRecord
   has_many :like_posts, through: :likes, source: :post
   attachment :profile_image
 
+  # 退会済みのユーザーはログインできなくする
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
+
   validates :introduction, {length: {maximum: 80}}
   validates :name, {presence: true, length: { in: 2..20 }}
 

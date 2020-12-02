@@ -26,12 +26,12 @@ Rails.application.routes.draw do
     get 'homes/about'
     get 'users/cancel'
 
-    resources :users, only: [:index, :show, :edit, :update, :destroy] do
+    resources :users, only: [:index, :show, :edit, :update] do
       collection do
       get 'like'
       get 'confirm'
       get 'search'
-      get 'cancel_confirmation'
+      put "/users/:id/hide" => "users#hide", as: 'hide'
       end
     end
 
@@ -46,13 +46,14 @@ Rails.application.routes.draw do
   end
 
   scope module: :users do
-    resources :users, only: [:show, :edit, :update, :destroy] do
+    resources :users, only: [:show, :edit, :update] do
       collection do
       get 'like'
       get 'confirm'
       get 'cancel_confirmation'
       get 'edit_password'
       put 'edit_password'
+      put "/users/:id/hide" => "users#hide", as: 'hide'
       end
     end
 
@@ -65,12 +66,12 @@ Rails.application.routes.draw do
     end
 
     resources :events, only: [:index, :show]
-    get 'likes/index'
-    post   '/like/:post_id' => 'likes#like',   as: 'like'
-    delete '/like/:post_id' => 'likes#unlike', as: 'unlike'
+      get 'likes/index'
+      post   '/like/:post_id' => 'likes#like',   as: 'like'
+      delete '/like/:post_id' => 'likes#unlike', as: 'unlike'
 
-    get 'homes/top'
-    get 'homes/about'
+      get 'homes/top'
+      get 'homes/about'
 
   end
 
