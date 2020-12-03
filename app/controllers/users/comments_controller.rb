@@ -1,29 +1,29 @@
 class Users::CommentsController < ApplicationController
   before_action :authenticate_user!
 
-   def create
-   @post = Post.find(params[:post_id])
-   @comment = @post.comments.new(comment_params)
-   @comment.user_id = current_user.id
-   if @comment.save
-    @comment = Comment.new
-   else
-    @comment = Comment.new
+  def create
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.new(comment_params)
+    @comment.user_id = current_user.id
+    if @comment.save
+      @comment = Comment.new
+    else
+      @comment = Comment.new
       redirect_back(fallback_location: root_path)
-    end
-  end
+     end
+ end
 
   def destroy
     @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
     @post = @comment.post
-   if @comment.user != current_user
-    # リダイレクト先考える
+    if @comment.user != current_user
+      # リダイレクト先考える
       redirect_to request.referer
-   else
+    else
       @comment.destroy
       @new_comment = Comment.new
-   end
+    end
   end
 
   private

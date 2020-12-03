@@ -1,5 +1,4 @@
 class Admins::EventsController < ApplicationController
-  
   before_action :authenticate_admin!
   def index
     @events = Event.all
@@ -22,7 +21,7 @@ class Admins::EventsController < ApplicationController
     @event.latitude = params["latitude"]
     @event.longitude = params["longitude"]
     if @event.save
-    redirect_to admins_events_path(@event)
+      redirect_to admins_events_path(@event)
     else
       render :new
     end
@@ -31,7 +30,7 @@ class Admins::EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
-    redirect_to admins_events_path, notice:"削除しました"
+    redirect_to admins_events_path, notice: "削除しました"
   end
 
   def edit
@@ -52,5 +51,4 @@ class Admins::EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:festival, :content, :prefecture, :city, :transportation, :addres, :latitude, :longitude, :event_image, :start_time)
   end
-
 end

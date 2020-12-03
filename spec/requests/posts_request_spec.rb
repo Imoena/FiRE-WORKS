@@ -6,6 +6,7 @@ RSpec.describe "Posts", type: :request do
       before do
         get new_post_path
       end
+
       it 'リクエストは200 OKとなること' do
         expect(response.status).to eq 200
       end
