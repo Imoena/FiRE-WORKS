@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   get 'posts/index'
   get 'posts/show'
   get 'posts/edit'
@@ -7,16 +6,16 @@ Rails.application.routes.draw do
   get 'users/show'
   get 'users/edit'
 
-  devise_for :admins,controllers: {
-  sessions: 'admins/sessions',
-  passwords: 'admins/passwords',
-  registrations: 'admins/registrations'
+  devise_for :admins, controllers: {
+    sessions: 'admins/sessions',
+    passwords: 'admins/passwords',
+    registrations: 'admins/registrations',
   }
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     passwords: 'users/passwords',
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
   }
 
   root 'users/homes#top'
@@ -28,16 +27,16 @@ Rails.application.routes.draw do
 
     resources :users, only: [:index, :show, :edit, :update] do
       collection do
-      get 'like'
-      get 'confirm'
-      get 'search'
-      put "/users/:id/hide" => "users#hide", as: 'hide'
+        get 'like'
+        get 'confirm'
+        get 'search'
+        put "/users/:id/hide" => "users#hide", as: 'hide'
       end
     end
 
     resources :posts do
       collection do
-      get 'search'
+        get 'search'
       end
       resources :comments, only: [:create, :destroy]
     end
@@ -48,32 +47,29 @@ Rails.application.routes.draw do
   scope module: :users do
     resources :users, only: [:show, :edit, :update] do
       collection do
-      get 'like'
-      get 'confirm'
-      get 'cancel_confirmation'
-      get 'edit_password'
-      put 'edit_password'
-      put "/users/:id/hide" => "users#hide", as: 'hide'
+        get 'like'
+        get 'confirm'
+        get 'cancel_confirmation'
+        get 'edit_password'
+        put 'edit_password'
+        put "/users/:id/hide" => "users#hide", as: 'hide'
       end
     end
 
     resources :posts do
       collection do
-      get 'search'
-      get 'prefecture'
+        get 'search'
+        get 'prefecture'
       end
       resources :comments, only: [:create, :destroy]
     end
 
     resources :events, only: [:index, :show]
-      get 'likes/index'
-      post   '/like/:post_id' => 'likes#like',   as: 'like'
-      delete '/like/:post_id' => 'likes#unlike', as: 'unlike'
+    get 'likes/index'
+    post   '/like/:post_id' => 'likes#like',   as: 'like'
+    delete '/like/:post_id' => 'likes#unlike', as: 'unlike'
 
-      get 'homes/top'
-      get 'homes/about'
-
+    get 'homes/top'
+    get 'homes/about'
   end
-
-
 end

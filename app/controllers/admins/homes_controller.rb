@@ -1,6 +1,6 @@
 class Admins::HomesController < ApplicationController
   def top
-  	@events = Event.all
+    @events = Event.all
   end
 
   def about
