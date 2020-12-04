@@ -1,6 +1,8 @@
 <% if @posts.present? %>
-<h4><%= @posts.last.prefecture %>の投稿一覧</h4>
+  <h4><%= @posts.last.prefecture %>の投稿一覧</h4>
 <% else %>
-<h4>投稿がありません</h4>
+  <h4>投稿がありません</h4>
 <% end %>
-<%= render partial: 'users/posts/index',locals: { posts: @posts } %>
+<div class="row">
+  <%= render partial: 'users/posts/index',locals: { posts: @posts } %>
+</div>
