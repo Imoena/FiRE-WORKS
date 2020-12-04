@@ -326,21 +326,45 @@ height: auto;
   z-index: 1; /* 相対位置指定 */
 }
 
+/*スライド上のタイトル部分*/
 .about-title {
-  width:    100%;
-  font-size:  100%;
+  width:    1000px;
+  height: 35%;
+  font-size:  60px;
   text-align: center;
   bottom:   4px;
-  margin:   0;
-  padding:  0;
   color:    #fff;
-  background: rgba(0,0,0,0.4); /* 帯の透明度 */
-  position: absolute;
-  z-index:999;
- /* 絶対位置指定 */
+  position: absolute; top: 300px;
+  z-index:999; /* 絶対位置指定 */
 }
 
-/*users/post/show　投稿詳細*/
+.about-index {
+  line-height: 1.5em;
+  position: relative;
+}
+
+.about-index:after {
+  content: "";
+  margin: 0 auto;
+  display: block;
+  width: 20%;
+  height: 2px;
+  border-radius: 2px;
+  background: #666;
+}
+
+.about-box {
+  text-align: center;
+}
+
+.about-content {
+  margin-top: 80px;
+}
+
+.about-text {
+  padding-top: 20px;
+}
+/*------users/post/show　投稿詳細------*/
 #show_map {
   height: 250px;
   width: 300px;
@@ -359,10 +383,3 @@ height: auto;
   
 }
 
-.about-box {
-  text-align: center;
-}
-
-.about-text {
-  margin-top: 80px;
-}
