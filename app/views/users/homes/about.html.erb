@@ -1,16 +1,18 @@
 <!------ スライドショー ------>
 <div class="slideshow-box">
    <p id="slideshow">
-      <%= image_tag asset_path('sunset1.jpg', alt: "画像1",class: "active show-img") %>
-      <%= image_tag asset_path('sunset2.jpg', alt: "画像2",class: "show-img") %>
-      <%= image_tag asset_path('sunset3.jpg', alt: "画像3",class: "show-img") %>
-      <%= image_tag asset_path('sunset4.jpg', alt: "画像4",class: "show-img") %>
-      <%= image_tag asset_path('sunset6.jpg', alt: "画像6",class: "show-img") %>
+      <%= image_tag(asset_path('sunset1.jpg'), alt: "画像1", class: "active") %>
+      <%= image_tag(asset_path('sunset2.jpg'), alt: "画像2") %>
+      <%= image_tag(asset_path('sunset3.jpg'), alt: "画像3") %>
+      <%= image_tag(asset_path('sunset4.jpg'), alt: "画像4") %>
+      <%= image_tag(asset_path('sunset6.jpg'), alt: "画像6", id: "last_image") %>
    </p>
    <p class="about-title">SPOT HANABI</p>
 </div>
 
    <script type="text/javascript">
+       var intervalId = null;
+       var counter = 0;
    function slideSwitch() {
       var $active = $('#slideshow img.active');
 
@@ -26,10 +28,18 @@
          .animate({opacity: 1.0}, 4000, function() {
               $active.removeClass('active last-active');
          });
+
+       // var last_img = document.getDocumentById('last_img')
+       // if (window.getComputedStyle(last_img).getPropertyValue("opacity") == 1.0) {
+       //    clearInterval(intervalId);
+       // }
+      if (counter++ >= 3) {
+         clearInterval(intervalId);
+      }
    }
 
    $(function() {
-      setInterval( "slideSwitch()", 7000 );
+      intervalId = setInterval( "slideSwitch()", 7000 );
    });
    </script>
 
@@ -74,4 +84,6 @@
          <%= link_to "TOPへ", root_path,class: "about-link", class: "btn btn-outline-secondary btn-sm"  %>
    </div>
 </div>
+
+
 
