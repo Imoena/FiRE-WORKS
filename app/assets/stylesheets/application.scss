@@ -269,32 +269,6 @@ height: auto;
 
 /*--------------about--------------*/
 
-.about-img {
-  background-image: image-url("sunset.jpg");
-  background-size: cover;
-  background-position: 30% 70%;
-  height: 500px;
-}
-.about-img1 {
-  background-image: image-url("ramune.jpg");
-  background-size: cover;
-  height: 500px;
-  background-color:rgba(255,255,255,0.2);
-  background-blend-mode:lighten;
-
-}
-.about-img2 {
-  background-image: image-url("goldfish.jpg");
-  background-size: cover;
-  height: 500px;
-
-}
-.about-img3 {
-  background-image: image-url("fruit-candy.jpg");
-  background-size: cover;
-  height: 500px;
-
-}
 
 #slideshow {
    position: relative;
@@ -311,8 +285,8 @@ height: auto;
    height: 650px;
 }
 #slideshow img.active {
-   z-index: 10;
-   opacity: 1.0;
+   z-index: 10;  /*z-indexを一番大きくすることで一番上に表示される*/
+   opacity: 1.0; /*完全に不透明*/
 }
 #slideshow img.last-active {
    z-index: 9;
@@ -322,8 +296,7 @@ height: auto;
   width:    100%;
   margin:   0;
   padding:  0;
-  position: relative; 
-  z-index: 1; /* 相対位置指定 */
+  position: relative; /* 相対位置指定 */
 }
 
 /*スライド上のタイトル部分*/
@@ -334,8 +307,8 @@ height: auto;
   text-align: center;
   bottom:   4px;
   color:    #fff;
-  position: absolute; top: 300px;
-  z-index:999; /* 絶対位置指定 */
+  position: absolute; top: 300px; /* 絶対位置指定 */
+  z-index:10;
 }
 
 .about-index {
@@ -350,7 +323,7 @@ height: auto;
   width: 20%;
   height: 2px;
   border-radius: 2px;
-  background: #666;
+  background: #fa8072;
 }
 
 .about-box {
