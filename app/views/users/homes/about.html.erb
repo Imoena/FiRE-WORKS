@@ -4,8 +4,7 @@
       <%= image_tag(asset_path('sunset1.jpg'), alt: "画像1", class: "active") %>
       <%= image_tag(asset_path('sunset2.jpg'), alt: "画像2") %>
       <%= image_tag(asset_path('sunset3.jpg'), alt: "画像3") %>
-      <%= image_tag(asset_path('sunset4.jpg'), alt: "画像4") %>
-      <%= image_tag(asset_path('sunset6.jpg'), alt: "画像6", id: "last_image") %>
+      <%= image_tag(asset_path('sunset4.jpg'), alt: "画像4", id: "last_image") %>
    </p>
    <p class="about-title">SPOT HANABI</p>
 </div>
@@ -25,7 +24,7 @@
 
       $next.css({opacity: 0.0})
          .addClass('active')
-         .animate({opacity: 1.0}, 4000, function() {
+         .animate({opacity: 1.0}, 3000, function() {
               $active.removeClass('active last-active');
          });
 
@@ -33,13 +32,13 @@
        // if (window.getComputedStyle(last_img).getPropertyValue("opacity") == 1.0) {
        //    clearInterval(intervalId);
        // }
-      if (counter++ >= 3) {
+      if (counter++ >= 2) {
          clearInterval(intervalId);
       }
    }
 
    $(function() {
-      intervalId = setInterval( "slideSwitch()", 7000 );
+      intervalId = setInterval( "slideSwitch()", 4000 );
    });
    </script>
 
@@ -73,7 +72,7 @@
    </div>
 
    <div class="about-content">
-      <h4 class="about-index">都道府県から探す</h4>
+      <h4 class="about-index">都道府県から探す</h4><br>
          <%= link_to "都道府県から探すへ",homes_top_path(anchor: 'map-box'),class: "about-link", class: "btn btn-outline-secondary btn-sm"  %>
    </div>
 
