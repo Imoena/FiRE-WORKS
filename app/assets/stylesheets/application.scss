@@ -84,24 +84,16 @@ height: auto;
 .calender {
   width: 100%;
 }
-
-.show_img {
-    height: 400px;
-    /*width: 100%;*/
-}
-
-.show_area {
-    margin : 0 auto;
-}
-
-.slick-next {
-    right: 10px !important;
-    z-index: 100;
+ #calendar-anc{
+   padding-left: 50px;
+   padding-top: 100px;
+   margin-top: -90px;
  }
 
-.slick-prev {
-    left: 10px !important;
-    z-index: 100;
+ .calendar-style {
+   color: #666666;
+   font-size: 14px;
+   text-decoration: none;
  }
 
  #map-box{
@@ -110,18 +102,12 @@ height: auto;
    margin-top: -80px;
  }
 
- #calendar-anc{
-   padding-left: 50px;
-   padding-top: 100px;
-   margin-top: -90px;
- }
 
 .top-index {
   display: inline-block;
   padding-left: 50px;
   padding-top: 50px;
   padding-bottom: 20px
-  
 }
 
 .top-index:after {
@@ -146,11 +132,12 @@ height: auto;
   text-decoration: none;
  }
 
- .c{
+ .top-image{
   margin: 0 auto;
   height: 400px;
   width :600px;
 }
+/*スライドショーの左右の画像を透過*/
 .slick-slide:not(.slick-center){
   -webkit-filter: opacity(70%);
   -moz-filter: opacity(70%);
@@ -160,8 +147,20 @@ height: auto;
   transition: 0.2s linear;
 }
 /*--------------header--------------*/
+
 .navbar {
   background: #013662;
+}
+
+.title-content {
+  /*background-image: image-url("title.png");*/
+  /*background-size: contain;*/
+  text-decoration: none;
+  font-family: 'Josefin Sans', sans-serif;
+  color: #FFF;
+  font-size: 20px;
+  height: 50px;
+  width: 100px;
 }
 
 .search_results{
@@ -328,6 +327,7 @@ height: auto;
 .about-title {
   width:    1000px;
   height: 35%;
+  font-family: 'Josefin Sans', sans-serif;
   font-size:  60px;
   text-align: center;
   bottom:   4px;
