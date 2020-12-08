@@ -1,8 +1,8 @@
-<!------ 運営おすすめイベントスライド ------>
+<!------ スライド ------>
 <div class="top-slide-group">
-    <div class="top-slide"><img class="top-image" src="assets/show1.jpg"></div>
-    <div class="top-slide"><img class="top-image" src="assets/show2.jpg"></div>
-    <div class="top-slide"><img class="top-image" src="assets/show3.jpg"></div>
+  <div class="top-slide"><%= image_tag(asset_path('show1.jpg'), alt: "画像1", class: "top-image") %></div>
+  <div class="top-slide"><%= image_tag(asset_path('show2.jpg'), alt: "画像1", class: "top-image") %></div>
+  <div class="top-slide"><%= image_tag(asset_path('show3.jpg'), alt: "画像1", class: "top-image") %></div>
 </div>
 
 <script type="text/javascript">
@@ -11,17 +11,12 @@
         dots: true,
         autoplay: true,
         centerMode: true,
-        centerPadding: '18%',
+        centerPadding: '15%',
         autoplaySpeed: 3000,
         speed:1500,
     });
 });
 </script>
-
-<%# @topic_event.each do |event| %>
-<%#= event.festival %>
-<%#= attachment_image_tag event, :event_image, format: 'jpeg', fallback: "no-image.jpg", size:'300x250'%>
-<%# end %>
 
 <!------ 都道府県別ランキング ------>
 <% if user_signed_in? %>
