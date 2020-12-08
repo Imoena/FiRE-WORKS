@@ -65,11 +65,18 @@ body {
   margin: 5px;
 }
 
+.fire-img {
+  object-fit: contain;
+  width: 250px;
+  height: 200px;
+}
+
 @media screen and (max-width:425px) {
 .fire-img {
 width:100%;
 max-width: 100%;
 height: auto;
+object-fit: contain;
 }
 }
 
@@ -78,6 +85,7 @@ height: auto;
 width:350px;
 max-width: 100%;
 height: auto;
+object-fit: contain;
 }
 }
 /*-------------top--------------*/
@@ -383,7 +391,9 @@ height: auto;
   }
 }
 
-#logo {
-  
+/*post/show,new 画像プレビュー*/
+#img_prev {
+  object-fit: contain;
+  width: 300px;
+  height: 250px;
 }
-

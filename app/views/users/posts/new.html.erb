@@ -4,7 +4,7 @@
 
       <div class="col-xs-12 col-lg-5">
         <div class="img_box">
-        <%= attachment_image_tag @post, :image, fallback: "no-image.jpg", id: "img_prev", format: 'jpeg', size:"300x250" %>
+        <%= attachment_image_tag @post, :image, fallback: "no-image.jpg", id: "img_prev", format: 'jpeg'%>
         <%= f.attachment_field :image %>
         <!-- Googleマップ -->
          <%= render partial: 'google_maps',locals: { post: @post } %>
