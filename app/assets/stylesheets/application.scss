@@ -289,6 +289,29 @@ object-fit: contain;
   color: #666666;
 }
 
+/*new,edit*/
+.map-container {
+  padding-top: 50px;
+}
+
+input[type="text"][name="search"]{
+        width: 200px;
+}
+
+input[type="text"][name="event[transportation]"]{
+        width: 300px;
+        height: 70px;
+}
+
+input[type="text"]{
+        width: 300px;
+}
+
+textarea {
+        width: 300px;
+        height: 100px;
+}
+
 /*--------------footer--------------*/
 .footer {
 	  height: 200px;
