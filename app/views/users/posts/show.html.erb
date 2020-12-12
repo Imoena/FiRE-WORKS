@@ -25,15 +25,16 @@
 
 <div class="row">
   <div class="col-xs-12 col-md-6 col-lg-5">
-    <%= attachment_image_tag @post, :image, format: 'jpeg', size:'300x250', fallback: "no-image.jpg", class: "fire-img" %>
+    <%= attachment_image_tag @post, :image, format: 'jpeg', size:'300x250', fallback: "no-image.jpg", class: "fire-show-img" %>
     <!-- google maps -->
         <div class="show">
               <div class="show__address">
               <%= @post.address %>
               </div>
+    <h6 class="impressions-item">おすすめSPOT</h6>
+              <div class="show__maps" id="show_map"></div>
               <div id="lat_data" style="visibility: hidden;"><%= @lat %></div>
               <div id="lng_data" style="visibility: hidden;"><%= @lng %></div>
-              <div class="show__maps" id="show_map"></div>
         </div>
   </div>
   <div class="col-xs-12 col-md-6 col-lg-6">
@@ -42,18 +43,18 @@
     <% end %>
     by<%= @post.user.name%></div>
     <div class="impressions_content">
-        <h6 class="impressions-item">感想:</h6>
-        <div class="impressions-box">
-          <p class="impressions-field"><%= @post.impressions %></p>
-        </div>
-    </div>
-    <div class="impressions_content">
-        <h6 class="impressions-item">おすすめの行き方:</h6>
+        <h6 class="impressions-item">おすすめの行き方、行く時間:</h6>
         <div><%= @post.transportation %></div>
     </div>
     <div class="impressions_content">
-          <h6 class="impressions-item">持ち物:</h6>
+          <h6 class="impressions-item">持っていくといいもの:</h6>
           <div><%= @post.belongings %></div>
+    </div>
+    <div class="impressions_content">
+        <h6 class="impressions-item">詳しく:</h6>
+        <div class="impressions-box">
+          <p class="impressions-field"><%= @post.impressions %></p>
+        </div>
     </div>
     <!-- お気に入り -->
     <% if @post.published? %>

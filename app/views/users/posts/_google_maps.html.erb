@@ -2,10 +2,10 @@
           <%= form_with(model: post, local: true, multipart: true) do |f| %>
             <div class="spot">
               <%= f.fields_for :spot do |s| %>
-                <%= s.label :address, "レビュー場所", class: 'spot__title' %>
+                <%= s.label :address, "おすすめSPOT", class: 'spot__title' %>
                 <%= s.text_field :address, placeholder: "スポットを入力", id: "address", class: 'spot__text' %>
                 <input type="button" onclick="codeAddress()" value="検索する">
-                <div class="map" id="map" style="height: 350px; width: 350px;"></div>
+                <div class="map" id="map" style="height: 350px; width: 400px;"></div>
               <% end %>
             </div>
           <% end %>

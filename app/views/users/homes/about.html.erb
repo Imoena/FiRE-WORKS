@@ -69,19 +69,19 @@
       <h4 class="about-index">カレンダーからさがす</h4>
          <p class="about-text">ユーザーの投稿はカレンダーからも探すことができます</p>
             カレンダーからは今年の花火大会の開催日時も確認できます<br>
-         <%= link_to "カレンダーから探す",homes_top_path(anchor: 'calendar-anc'),class: "about-link", class: "btn btn-outline-secondary btn-sm"  %>
+         <%= link_to "カレンダーから探す",homes_top_path(anchor: 'calendar-anc'),class: "about-link", class: "btn btn-outline-secondary btn-sm", data: {"turbolinks" => false}%>
    </div>
 
    <div class="about-content">
       <h4 class="about-index">都道府県から探す</h4><br>
-         <%= link_to "都道府県から探すへ",homes_top_path(anchor: 'map-box'),class: "about-link", class: "btn btn-outline-secondary btn-sm"  %>
+         <%= link_to "都道府県から探すへ",homes_top_path(anchor: 'map-box'),class: "about-link", class: "btn btn-outline-secondary btn-sm", data: {"turbolinks" => false}%>
    </div>
 
    <div class="about-content">
          <p>新規ユーザー登録をしなくても閲覧は可能ですが<br>
             投稿、コメント、お気に入り登録には会員登録が必要です<br>
          （かんたんログイン（テストユーザー）をぜひご利用ください）</p>
-         <%= link_to "TOPへ", root_path,class: "about-link", class: "btn btn-outline-secondary btn-sm"  %>
+         <%= link_to "TOPへ", root_path,class: "about-link", class: "btn btn-outline-secondary btn-sm", data: {"turbolinks" => false}%>
    </div>
 </div>
 
