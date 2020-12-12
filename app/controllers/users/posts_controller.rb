@@ -41,13 +41,14 @@ class Users::PostsController < ApplicationController
 
   def edit
     if @post.user == current_user
-      render "edit"
+       render "edit"
     else
       redirect_to posts_path
     end
   end
 
   def update
+    byebug
     if @post.update(post_params)
       # flash[:notice] = "You have updated post successfully."
       redirect_to post_path(@post.id)
