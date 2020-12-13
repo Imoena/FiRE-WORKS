@@ -2,16 +2,22 @@ var map //変数の定義
 var geocoder //変数の定義
 
 // クリックしたところにマーカーを落とす
-
 var marker;
+
 window.onload = function(){ //コールバック関数
   geocoder = new google.maps.Geocoder() //GoogleMapsAPIジオコーディングサービスにアクセス
+   // console.log("test")
+   // var test = {lat: <%= @lat %>, lng: <%= @lng %>};
+   // console.log(test)
+
   if(document.getElementById('map')){ //'map'というidを取得できたら実行
     map = new google.maps.Map(document.getElementById('map'), { //'map'というidを取得してマップを表示
-      center: {lat: 35.6594666, lng: 139.7005536}, //最初に表示する場所（今回は「渋谷スクランブル交差点」が初期値）
+      // center: {lat: 35.6594666, lng: 139.7005536}, //最初に表示する場所（今回は「渋谷スクランブル交差点」が初期値）
+      center: {lat: lat, lng: lng}, //最初に表示する場所（今回は「渋谷スクランブル交差点」が初期値）
       zoom: 17, //拡大率（1〜21まで設定可能）
     });
-    marker = new google.maps.Marker({map: map, position: new google.maps.LatLng(35.6594666, 139.7005536), draggable: true});
+    // marker = new google.maps.Marker({map: map, position: new google.maps.LatLng(35.6594666, 139.7005536), draggable: true});
+    marker = new google.maps.Marker({map: map, position: new google.maps.LatLng(lat, lng), draggable: true});
     map.addListener('click', function(argument) {
       var lat = argument.latLng.lat();
       var lng = argument.latLng.lng();

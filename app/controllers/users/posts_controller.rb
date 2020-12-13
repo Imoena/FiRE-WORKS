@@ -4,6 +4,8 @@ class Users::PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @lat = 35.706090265070664
+    @lng = 139.8695789931152
   end
 
   def index
@@ -40,6 +42,8 @@ class Users::PostsController < ApplicationController
   end
 
   def edit
+    @lat = @post.latitude
+    @lng = @post.longitude
     if @post.user == current_user
        render "edit"
     else
@@ -48,7 +52,6 @@ class Users::PostsController < ApplicationController
   end
 
   def update
-    byebug
     if @post.update(post_params)
       # flash[:notice] = "You have updated post successfully."
       redirect_to post_path(@post.id)

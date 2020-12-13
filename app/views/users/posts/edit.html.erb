@@ -1,5 +1,4 @@
 <h4>投稿編集</h4>
-
 <%= form_for(@post, url: post_path, method: :PUT) do |f| %>
 <form>
   <div class="row">
@@ -8,13 +7,14 @@
         <div class="img_box">
         <%= attachment_image_tag @post, :image, fallback: "no-image.jpg", id: "img_prev", format: 'jpeg'%>
         <%= f.attachment_field :image %>
+        </div>
         <!-- Googleマップ -->
         <div class="google-map-container">
-         <%= render partial: 'google_maps',locals: { post: @post } %>
+         <%= render partial: 'google_maps',locals: { post: @post, lat: @lat, lng: @lng } %>
         </div>
-        </div>
+      </div>
 
-      <div class="col">
+      <div class="col-xs-12 col-lg-7">
         <div class="form-group">
           <%= f.label "花火大会名(必須)",class: "post-new-index" %><br>
           <%= f.text_field :festival,size: "40",placeholder: "隅田川花火大会" %>
