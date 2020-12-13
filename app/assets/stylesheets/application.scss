@@ -72,21 +72,21 @@ body {
 }
 
 @media screen and (max-width:425px) {
-.fire-img {
-width:100%;
-max-width: 100%;
-height: auto;
-object-fit: contain;
-}
+  .fire-img {
+  width:100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  }
 }
 
 @media screen and (max-width:1200px) {
-.fire-img {
-width:350px;
-max-width: 100%;
-height: auto;
-object-fit: contain;
-}
+  .fire-img {
+  width:350px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  }
 }
 /*-------------top--------------*/
 .calender {
@@ -226,7 +226,8 @@ object-fit: contain;
 
 /*---------------post--------------*/
 .post-block {
-  background: white;
+  margin: 0.5em;
+  background: #FFF;
   box-shadow: 0 0 8px -4px #000;
   display: flex;
   border-radius: 5px;
