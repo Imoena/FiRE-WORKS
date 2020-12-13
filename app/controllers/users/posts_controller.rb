@@ -52,6 +52,8 @@ class Users::PostsController < ApplicationController
   end
 
   def update
+    @post.latitude = params["latitude"]
+    @post.longitude = params["longitude"]
     if @post.update(post_params)
       # flash[:notice] = "You have updated post successfully."
       redirect_to post_path(@post.id)
