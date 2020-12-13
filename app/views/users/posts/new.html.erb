@@ -9,7 +9,7 @@
         <%= f.attachment_field :image %>
         <!-- Googleマップ -->
         <div class="google-map-container">
-         <%= render partial: 'google_maps',locals: { post: @post } %>
+         <%= render partial: 'google_maps',locals: { post: @post, lat: @lat, lng: @lng } %>
         </div>
         </div>
 
