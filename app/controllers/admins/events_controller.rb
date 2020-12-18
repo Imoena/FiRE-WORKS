@@ -10,16 +10,10 @@ class Admins::EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @lat = @event.latitude
-    @lng = @event.longitude
-    gon.lat = @lat
-    gon.lng = @lng
   end
 
   def create
     @event = Event.new(event_params)
-    @event.latitude = params["latitude"]
-    @event.longitude = params["longitude"]
     if @event.save
       redirect_to admins_events_path(@event)
     else
@@ -49,6 +43,6 @@ class Admins::EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:festival, :content, :prefecture, :city, :transportation, :addres, :latitude, :longitude, :event_image, :start_time)
+    params.require(:event).permit(:festival, :content, :prefecture, :city, :transportation, :event_image, :start_time)
   end
 end
