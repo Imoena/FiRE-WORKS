@@ -437,16 +437,20 @@ input[type="text"][name="search"]{
         width: 200px;
 }
 
-input[type="text"][name="event[transportation]"]{
+input[type="text"][name="event[festival]"]{
         width: 300px;
-        height: 70px;
 }
 
-/*input[type="text"]{
+input[type="text"][name="event[city]"]{
         width: 300px;
-}*/
+}
 
 textarea[name="event[content]"] {
+        width: 300px;
+        height: 100px;
+}
+
+textarea[name="event[transportation]"] {
         width: 300px;
         height: 100px;
 }
