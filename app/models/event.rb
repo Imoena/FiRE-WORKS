@@ -2,16 +2,11 @@ class Event < ApplicationRecord
   has_many :posts, dependent: :destroy
   attachment :event_image
 
-  geocoded_by :address
-  after_validation :geocode
-
   validates :festival, presence: true
   validates :city, presence: true
   validates :transportation, presence: true
   validates :content, presence: true
   validates :start_time, presence: true
-  validates :latitude, presence: true
-  validates :longitude, presence: true
 
   enum prefecture: {
     "---": 0,
